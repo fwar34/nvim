@@ -909,7 +909,9 @@ if s:memory_enough
     endif
 
     Plug 'Shougo/neoinclude.vim'
-    let g:python3_host_prog='C:\Users\feng\AppData\Local\Programs\Python\Python37-32\python.exe'
+    if has('win32')
+        let g:python3_host_prog='C:\Users\feng\AppData\Local\Programs\Python\Python37-32\python.exe'
+    endif
 endif
 
 "--------------------------------------------------------------------------
@@ -922,8 +924,8 @@ Plug 'WenxiJin/.clang_complete'
 "--------------------------------------------------------------------------
 " 彩虹括号 for vim
 "--------------------------------------------------------------------------
-if (s:memory_enough) && !has('nvim')
-    Plug 'luochen1990/rainbow'
+if (s:memory_enough) "&& !has('nvim')
+    Plug 'luochen1990/rainbow', { 'tag': 'v3.3.1' }
 
     let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
     let g:rainbow_conf = {
@@ -953,37 +955,37 @@ endif
 "--------------------------------------------------------------------------
 " 彩虹括号 for nvim
 "--------------------------------------------------------------------------
-if has('nvim')
-    Plug 'kien/rainbow_parentheses.vim'
+"if has('nvim')
+    "Plug 'kien/rainbow_parentheses.vim'
 
-    let g:rbpt_colorpairs = [
-                \ ['brown',       'RoyalBlue3'],
-                \ ['Darkblue',    'SeaGreen3'],
-                \ ['darkgray',    'DarkOrchid3'],
-                \ ['darkgreen',   'firebrick3'],
-                \ ['darkcyan',    'RoyalBlue3'],
-                \ ['darkred',     'SeaGreen3'],
-                \ ['darkmagenta', 'DarkOrchid3'],
-                \ ['brown',       'firebrick3'],
-                \ ['gray',        'RoyalBlue3'],
-                \ ['black',       'SeaGreen3'],
-                \ ['darkmagenta', 'DarkOrchid3'],
-                \ ['Darkblue',    'firebrick3'],
-                \ ['darkgreen',   'RoyalBlue3'],
-                \ ['darkcyan',    'SeaGreen3'],
-                \ ['darkred',     'DarkOrchid3'],
-                \ ['red',         'firebrick3'],
-                \ ]   
+    "let g:rbpt_colorpairs = [
+                "\ ['brown',       'RoyalBlue3'],
+                "\ ['Darkblue',    'SeaGreen3'],
+                "\ ['darkgray',    'DarkOrchid3'],
+                "\ ['darkgreen',   'firebrick3'],
+                "\ ['darkcyan',    'RoyalBlue3'],
+                "\ ['darkred',     'SeaGreen3'],
+                "\ ['darkmagenta', 'DarkOrchid3'],
+                "\ ['brown',       'firebrick3'],
+                "\ ['gray',        'RoyalBlue3'],
+                "\ ['black',       'SeaGreen3'],
+                "\ ['darkmagenta', 'DarkOrchid3'],
+                "\ ['Darkblue',    'firebrick3'],
+                "\ ['darkgreen',   'RoyalBlue3'],
+                "\ ['darkcyan',    'SeaGreen3'],
+                "\ ['darkred',     'DarkOrchid3'],
+                "\ ['red',         'firebrick3'],
+                "\ ]   
 
-    let g:rbpt_max = 16
-    let g:rbpt_loadcmd_toggle = 0
+    "let g:rbpt_max = 16
+    "let g:rbpt_loadcmd_toggle = 0
 
-    autocmd VimEnter * RainbowParenthesesToggle
-    autocmd Syntax * RainbowParenthesesLoadRound
-    autocmd Syntax * RainbowParenthesesLoadSquare
-    autocmd Syntax * RainbowParenthesesLoadBraces
+    "autocmd VimEnter * RainbowParenthesesToggle
+    "autocmd Syntax * RainbowParenthesesLoadRound
+    "autocmd Syntax * RainbowParenthesesLoadSquare
+    "autocmd Syntax * RainbowParenthesesLoadBraces
 
-endif
+"endif
 
 "--------------------------------------------------------------------------
 " 调颜色插件 
