@@ -912,7 +912,13 @@ if s:memory_enough
 
     Plug 'Shougo/neoinclude.vim'
     if has('win32')
-        let g:python3_host_prog='C:\Users\feng\AppData\Local\Programs\Python\Python37-32\python.exe'
+        if isdirectory('C:\Users\feng\AppData\Local\Programs\Python\Python37-32')
+            let g:python3_host_prog='C:\Users\feng\AppData\Local\Programs\Python\Python37-32\python.exe'
+        elseif isdirectory('C:\Users\fwar3\AppData\Local\Programs\Python\Python36')
+        elseif isdirectory('C:\Users\liang.feng\AppData\Local\Programs\Python\Python36')
+        elseif isdirectory('C:\Python37')
+            let g:python3_host_prog='C:\Python37\python.exe'
+        endif
     endif
 endif
 
@@ -2003,9 +2009,9 @@ onoremap il> :<C-U>normal! F>vi><CR>
 "--------------------------------------------------------------------------
 if has('terminal') || has('nvim')
     if has('unix')
-        nnoremap <silent> <Leader>tm :term zsh<CR>
+        nnoremap <silent> <Leader>tm :term zsh<CR> :startinsert<CR>
     else
-        nnoremap <silent> <Leader>tm :term powershell<CR>
+        nnoremap <silent> <Leader>tm :term powershell<CR> :startinsert<CR>
     endif
 
     if !has('nvim')
