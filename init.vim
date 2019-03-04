@@ -192,7 +192,7 @@ endif
 " This is a Vim plugin that provides Rust file detection, 
 " syntax highlighting, formatting, Syntastic integration, and more.
 "--------------------------------------------------------------------------
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' } "for: On-demand loading: File types
 
 
 "--------------------------------------------------------------------------
@@ -982,7 +982,7 @@ let g:scratch_autohide=1
 "--------------------------------------------------------------------------
 " nerdtree 
 "--------------------------------------------------------------------------
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "on: On-demand loading: Commands or <Plug>-mappings
 nnoremap <Leader>tt :NERDTreeToggle<CR>
 " 设置 NERDTree 子窗口宽度
 let NERDTreeWinSize=35
