@@ -1698,11 +1698,11 @@ set autoread
 "代码补全 
 set completeopt=noinsert,menuone,noselect
 "共享剪贴板  
-set clipboard+=unnamed 
+set clipboard+=unnamedplus
 "从不备份  
 set nobackup
 "make 运行
-:set makeprg=g++\ -Wall\ \ -std=c++11\ %
+set makeprg=g++\ -Wall\ \ -std=c++11\ %
 set noshowmode       "状态栏不显示模式
 "自动保存
 set autowrite
