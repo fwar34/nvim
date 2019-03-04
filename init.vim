@@ -30,9 +30,6 @@ else
     call s:read_total_memory()
 endif
 
-if $NVIM_TUI_ENABLE_TRUE_COLOR
-    echom XXXXX
-endif
 
 "--------------------------------------------------------------------------
 " 
