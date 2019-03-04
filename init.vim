@@ -1153,7 +1153,7 @@ let g:ycm_collect_identifiers_from_tags_files=1
 inoremap <Leader><Tab> <C-x><C-o>
 "
 " 补全内容不以分割子窗口形式出现，只显示补全列表
-set completeopt-=preview
+"set completeopt-=preview
 " 从第一个键入字符就开始罗列匹配项
 let g:ycm_min_num_of_chars_for_completion=1
 " 禁止缓存匹配项，每次都重新生成匹配项
@@ -1702,7 +1702,7 @@ set autoread
 " quickfix模式
 "autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 "代码补全 
-set completeopt=longest,preview,menu 
+set completeopt=longest,menu,noinsert
 "共享剪贴板  
 set clipboard+=unnamed 
 "从不备份  
@@ -1815,9 +1815,6 @@ inoremap <M-i> <Esc>mgviwu`gli
 "将当前光标所在的单词转换成 小写格式
 nnoremap <M-u> mgviwU`g
 nnoremap <M-i> mgviwu`g
-
-"打开文件类型检测, 加了这句才可以用智能补全
-"set completeopt=longest,menu
 
 
 "--------------------------------------------------------------------------
