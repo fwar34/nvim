@@ -916,6 +916,7 @@ if s:memory_enough
             let g:python3_host_prog='C:\Users\feng\AppData\Local\Programs\Python\Python37-32\python.exe'
         elseif isdirectory('C:\Users\fwar3\AppData\Local\Programs\Python\Python36')
         elseif isdirectory('C:\Users\liang.feng\AppData\Local\Programs\Python\Python36')
+            let g:python3_host_prog='C:\Users\liang.feng\AppData\Local\Programs\Python\Python36\python.exe'
         elseif isdirectory('C:\Python37')
             let g:python3_host_prog='C:\Python37\python.exe'
         endif
@@ -1464,11 +1465,11 @@ if has('gui_running')
 endif
 
 if has('nvim')
-    if hostname() == "FENG-PC"
+    if hostname() == "FENG-PC" || hostname() == "A12839"
         set guifont=Courier\ New:h12:cANSI
         "设置中文为微软雅黑
-        "set guifontwide=Microsoft\ YaHei:h12
-        "set guifontwide=黑体:b:h11:cGB2312
+        "set guifontwide=Microsoft\ YaHei:h11
+        "set guifontwide=:h10:cGB2312
     endif
 endif
 
