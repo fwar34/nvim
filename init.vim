@@ -69,8 +69,6 @@ if has('win32') && !has('nvim')
         set pythonthreedll=C:\Users\feng\AppData\Local\Programs\Python\Python37-32\python37.dll
     elseif isdirectory('C:\Users\fwar3\AppData\Local\Programs\Python\Python36')
         set pythonthreedll=C:\Users\fwar3\AppData\Local\Programs\Python\Python36\python36.dll
-    elseif isdirectory('C:\Users\liang.feng\AppData\Local\Programs\Python\Python36')
-        set pythonthreedll=C:\Users\liang.feng\AppData\Local\Programs\Python\Python36\python36.dll
     elseif isdirectory('C:\Python37')
         set pythonthreedll=C:\Python37\python37.dll
     endif
@@ -643,22 +641,22 @@ nnoremap <Leader>cc :commentary<CR>
 "--------------------------------------------------------------------------
 " Omni
 "--------------------------------------------------------------------------
-if (s:memory_enough)
-    Plug 'vim-scripts/OmniCppComplete'
-endif
+"if (s:memory_enough)
+    "Plug 'vim-scripts/OmniCppComplete'
+"endif
 "set completeopt=menu,menuone " 关掉智能补全时的预览窗口
-let OmniCpp_MayCompleteDot = 1 " autocomplete with .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
-let OmniCpp_SelectFirstItem = 2 " select first item (but don't insert)
-let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype in popup window
-let OmniCpp_GlobalScopeSearch=1 " enable the global scope search
-let OmniCpp_DisplayMode=1 " Class scope completion mode: always show all members
-"let OmniCpp_DefaultNamespaces=["std"]
-"let OmniCpp_DefaultNamespaces=["_GLIBCXX_STD"]
-let OmniCpp_ShowScopeInAbbr=1 " show scope in abbreviation and remove the last column
-let OmniCpp_ShowAccess=1
+"let OmniCpp_MayCompleteDot = 1 " autocomplete with .
+"let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
+"let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
+"let OmniCpp_SelectFirstItem = 2 " select first item (but don't insert)
+"let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
+"let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype in popup window
+"let OmniCpp_GlobalScopeSearch=1 " enable the global scope search
+"let OmniCpp_DisplayMode=1 " Class scope completion mode: always show all members
+    "let OmniCpp_DefaultNamespaces=["std"]
+    "let OmniCpp_DefaultNamespaces=["_GLIBCXX_STD"]
+"let OmniCpp_ShowScopeInAbbr=1 " show scope in abbreviation and remove the last column
+"let OmniCpp_ShowAccess=1
 
 ""setlocal omnifunc=tern#Complete
 ""call tern#Enable()
@@ -888,6 +886,10 @@ if s:memory_enough
         Plug 'Shougo/deoplete.nvim', { 'tag': '4.1' }
         Plug 'roxma/nvim-yarp'
         Plug 'roxma/vim-hug-neovim-rpc'
+
+        if has('pythonx')
+            set pyxversion=3
+        endif
     endif
     let g:deoplete#enable_at_startup = 1
 
@@ -901,7 +903,6 @@ if s:memory_enough
     "call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
     if has('unix')
-        "Plug 'zchee/deoplete-clang'
         Plug 'deoplete-plugins/deoplete-clang'
         if isdirectory('/usr/lib/llvm-6.0/')
             let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
@@ -920,8 +921,6 @@ if s:memory_enough
         if isdirectory('C:\Users\feng\AppData\Local\Programs\Python\Python37-32')
             let g:python3_host_prog='C:\Users\feng\AppData\Local\Programs\Python\Python37-32\python.exe'
         elseif isdirectory('C:\Users\fwar3\AppData\Local\Programs\Python\Python36')
-        elseif isdirectory('C:\Users\liang.feng\AppData\Local\Programs\Python\Python36')
-            let g:python3_host_prog='C:\Users\liang.feng\AppData\Local\Programs\Python\Python36\python.exe'
         elseif isdirectory('C:\Python37')
             let g:python3_host_prog='C:\Python37\python.exe'
         endif
