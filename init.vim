@@ -147,6 +147,14 @@ Plug 'terryma/vim-expand-region'
 
 
 "--------------------------------------------------------------------------
+" Automatically opens popup menu for completions
+"--------------------------------------------------------------------------
+if !has('nvim')
+    Plug 'vim-scripts/AutoComplPop'
+endif
+
+
+"--------------------------------------------------------------------------
 " 
 "--------------------------------------------------------------------------
 if !(s:memory_enough)
@@ -178,14 +186,6 @@ nmap <silent> <Leader>yd <Plug>DictWSearch
 vmap <silent> <Leader>yd <Plug>DictWVSearch
 nnoremap <Leader>yi :Dict 
 nnoremap <Leader>yw :DictW 
-
-
-"--------------------------------------------------------------------------
-" 括号匹配 
-"--------------------------------------------------------------------------
-if (s:memory_enough)
-    Plug 'vim-scripts/matchit.zip'
-endif
 
 
 "--------------------------------------------------------------------------
@@ -615,12 +615,6 @@ augroup fswitch_grp
     au! BufEnter *.h let b:fswitchdst = 'c,cpp,m,cc' | let b:fswitchlocs = 'reg:/include/src/,reg:/include.*/src/,ifrel:|/include/|../src|'
     au! BufEnter *.hpp let b:fswitchdst = 'c,cpp,m,cc' | let b:fswitchlocs = 'reg:/include/src/,reg:/include.*/src/,ifrel:|/include/|../src|'
 augroup END
-
-
-"--------------------------------------------------------------------------
-" Automatically opens popup menu for completions 
-"--------------------------------------------------------------------------
-Plug 'vim-scripts/AutoComplPop'
 
 
 "--------------------------------------------------------------------------
@@ -1702,7 +1696,7 @@ set autoread
 " quickfix模式
 "autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 "代码补全 
-set completeopt=longest,menu,noinsert
+set completeopt=noinsert,menuone,noselect
 "共享剪贴板  
 set clipboard+=unnamed 
 "从不备份  
@@ -1966,10 +1960,12 @@ if has('terminal') || has('nvim')
         endif
     endif
 
-    if !has('nvim')
-        tnoremap <silent> <Leader>g exit<CR><C-w>:q!<CR>
-    else
+    if has('nvim')
         tnoremap <silent> <Leader>g exit<CR>
+        tnoremap <silent> <Leader>n <C-\><C-N>
+    else
+        tnoremap <silent> <Leader>g exit<CR><C-w>:q!<CR>
+        tnoremap <silent> <Leader>n <C-W>N
     endif
 
     tnoremap <Leader><Tab> <C-w><C-w>
