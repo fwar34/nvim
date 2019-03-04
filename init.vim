@@ -75,7 +75,16 @@ if has('win32') && !has('nvim')
     endif
 endif
 
-
+if has("termguicolors")
+    if has('nvim')
+        " enable true color
+        set termguicolors
+    else
+        " fix bug for vim
+        set t_8f=^[[38;2;%lu;%lu;%lum
+        set t_8b=^[[48;2;%lu;%lu;%lum
+    endif
+endif
 
 " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
 if has('gui_running') || has('nvim')
@@ -101,7 +110,6 @@ nnoremap <silent> <Space>qq :q<CR>
 nnoremap <silent> <Space>qm <C-z>
 let mapleader = ";"
 let g:mapleader = ";"
-"set termguicolors
 
 
 "--------------------------------------------------------------------------
