@@ -897,7 +897,8 @@ if s:memory_enough
     "call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
     if has('unix')
-        Plug 'zchee/deoplete-clang'
+        "Plug 'zchee/deoplete-clang'
+        Plug 'deoplete-plugins/deoplete-clang'
         if isdirectory('/usr/lib/llvm-6.0/')
             let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
             let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-6.0/lib/clang'
