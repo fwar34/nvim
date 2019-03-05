@@ -2058,7 +2058,7 @@ endfunction
 "行号颜色
 if has('nvim')
     "highlight LineNr ctermfg=202 guifg=#ff875f guibg=translate
-    highlight LineNr guifg=#ff875f guibg=translate
+    highlight LineNr guifg=#ff875f guibg=translate ctermfg=209
 else 
     if has('gui_running')
         highlight LineNr guifg=#ff875f guibg=#3a3a3a
