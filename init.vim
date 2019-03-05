@@ -131,8 +131,8 @@ let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml'] 
 
-nnoremap <Leader>vv :AsyncRun 
-nnoremap <Leader>vt :AsyncStop<CR>
+nnoremap <silent> <Leader>vv :AsyncRun 
+nnoremap <silent> <Leader>vt :AsyncStop<CR>
 "然后在 AsyncRun 命令行中，用 <root> 或者 $(VIM_ROOT) 
 "来表示项目所在路径，于是我们可以定义按 F7 编译整个项目
 nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
@@ -315,9 +315,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
        "\ 'spinner': ['fg', 'Label'],
        "\ 'header':  ['fg', 'Comment'] }
 
-nnoremap <Leader>fi :FZF<CR>
-nnoremap <Leader>fm :FZF!<CR>
-nnoremap <Leader>fh :FZF! ~<CR>
+nnoremap <silent> <Leader>fi :FZF<CR>
+nnoremap <silent> <Leader>fm :FZF!<CR>
+nnoremap <silent> <Leader>fh :FZF! ~<CR>
 
 
 "--------------------------------------------------------------------------
@@ -327,10 +327,10 @@ Plug 'rking/ag.vim'
 " ag的忽略文件在~/.agignore
 let g:ag_working_path_mode="r" "search from project root
 let g:ag_highlight=1
-nnoremap <Space>fa :Ag 
-nnoremap <Space>fw :Ag <C-R>=expand("<cword>")<CR><CR>
-nnoremap <Space>fb :AgBuffer <C-R>=expand("<cword>")<CR><CR>
-nnoremap <Space>fc :AgFile 
+nnoremap <silent> <Space>fa :Ag 
+nnoremap <silent> <Space>fw :Ag <C-R>=expand("<cword>")<CR><CR>
+nnoremap <silent> <Space>fb :AgBuffer <C-R>=expand("<cword>")<CR><CR>
+nnoremap <silent> <Space>fc :AgFile 
 
 "--------------------------------------------------------------------------
 " An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2  
@@ -440,10 +440,10 @@ endif
 
 let g:Lf_ShortcutF = '<Leader>ff'
 let g:Lf_ShortcutB = '<Leader>bs'
-nnoremap <Leader>db :bd<CR>
-nnoremap <Leader>do :on<CR>
-noremap <Leader>rm :LeaderfMru<cr>
-noremap <Leader>ii :LeaderfFunction!<cr>
+nnoremap <silent> <Leader>db :bd<CR>
+nnoremap <silent> <Leader>do :on<CR>
+noremap <silent> <Leader>rm :LeaderfMru<cr>
+noremap <silent> <Leader>ii :LeaderfFunction!<cr>
 "noremap <Leader>tb :LeaderfTag<cr>
 "let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_PreviewCode = 1
@@ -620,7 +620,7 @@ Plug 'https://github.com/altercation/vim-colors-solarized.git'
 " switch c with cpp
 "--------------------------------------------------------------------------
 Plug 'derekwyatt/vim-fswitch'
-nnoremap <Leader>fo :FSHere<CR>
+nnoremap <silent> <Leader>fo :FSHere<CR>
 augroup fswitch_grp
     autocmd!
     au! BufEnter *.cc let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = 'reg:/src/include/,reg:|src|include/**|,ifrel:|/src/|../include|'
@@ -641,7 +641,7 @@ Plug 'tpope/vim-surround'
 " 
 "--------------------------------------------------------------------------
 Plug 'tpope/vim-commentary'
-nnoremap <Leader>cc :commentary<CR>
+nnoremap <silent> <Leader>cc :commentary<CR>
 
 
 "--------------------------------------------------------------------------
@@ -965,7 +965,7 @@ let g:scratch_autohide=1
 " nerdtree 
 "--------------------------------------------------------------------------
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "on: On-demand loading: Commands or <Plug>-mappings
-nnoremap <Leader>tt :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>tt :NERDTreeToggle<CR>
 " 设置 NERDTree 子窗口宽度
 let NERDTreeWinSize=35
 " 设置 NERDTree 子窗口位置
@@ -1526,7 +1526,7 @@ func InsertVimCommit()
     call append(line(".") - 1, "\" ")
     call append(line(".") - 1, "\"--------------------------------------------------------------------------")
 endfunc
-nnoremap <Leader>ic :call InsertVimCommit()<CR>
+nnoremap <silent> <Leader>ic :call InsertVimCommit()<CR>
 
 func InsertTitle()
     call append(line(".")-1, "/****************************************************************************************")
@@ -1548,7 +1548,7 @@ func InsertTitle()
     call append(line(".")-1, " *")
     call append(line(".")-1, " ****************************************************************************************/") 
 endfunc
-nnoremap <Leader>it :call InsertTitle()<CR>
+nnoremap <silent> <Leader>it :call InsertTitle()<CR>
 
 "--------------------------------------------------------------------------
 " 键盘命令 
@@ -2046,3 +2046,6 @@ endfunction
 "nnoremap <Leader>nau :call RestoreClosePair()<CR>
 "nnoremap <Leader>hau :call AutoClosePair()<CR>
 
+
+"行号颜色
+highlight LineNr ctermfg=red ctermbg=gray guifg=#875f5f guibg=translate
