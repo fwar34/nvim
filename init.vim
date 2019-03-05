@@ -383,6 +383,20 @@ let g:AutoPairsShortcutToggle = '<Leader>pp'
 
 
 "--------------------------------------------------------------------------
+" tagbar
+"--------------------------------------------------------------------------
+Plug 'majutsushi/tagbar'
+nnoremap <silent> <Leader>tb :TagbarToggle<CR>
+"设置宽度为30 
+"let g:tagbar_width = 30 
+"开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
+"let g:tagbar_autopreview = 1
+"关闭排序,即按标签本身在文件中的位置排序 
+let g:tagbar_sort = 0
+let g:tagbar_autofocus = 1
+
+
+"--------------------------------------------------------------------------
 " vim从其它地方赋值粘贴时自动换行添加缩进解决办法 
 " https://blog.csdn.net/xiaoyilong2007101095/article/details/54836854
 "--------------------------------------------------------------------------
@@ -430,7 +444,7 @@ nnoremap <Leader>db :bd<CR>
 nnoremap <Leader>do :on<CR>
 noremap <Leader>rm :LeaderfMru<cr>
 noremap <Leader>ii :LeaderfFunction!<cr>
-noremap <Leader>tb :LeaderfTag<cr>
+"noremap <Leader>tb :LeaderfTag<cr>
 "let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_PreviewCode = 1
 if executable('/usr/local/bin/ctags')
@@ -445,12 +459,10 @@ let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'lightline'
 "let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
-
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg'],
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
 			\ }
-
 let g:Lf_MruFileExclude = ['*.so', '*.exe', '*.py[co]', '*.sw?', '~$*', '*.bak', '*.tmp', '*.dll']
 let g:Lf_MruMaxFiles = 2048
 let g:Lf_CommandMap = {'<Esc>': ['<C-g>']}
