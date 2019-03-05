@@ -131,8 +131,8 @@ let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml'] 
 
-nnoremap <silent> <Leader>vv :AsyncRun 
-nnoremap <silent> <Leader>vt :AsyncStop<CR>
+nnoremap <Leader>vv :AsyncRun 
+nnoremap <Leader>vt :AsyncStop<CR>
 "然后在 AsyncRun 命令行中，用 <root> 或者 $(VIM_ROOT) 
 "来表示项目所在路径，于是我们可以定义按 F7 编译整个项目
 nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
