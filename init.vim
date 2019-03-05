@@ -1982,13 +1982,13 @@ if has('terminal') || has('nvim')
 
     if has('nvim')
         tnoremap <silent> <Leader>g exit<CR>
-        tnoremap <silent> <Leader>n <C-\><C-N>
     else
         tnoremap <silent> <Leader>g exit<CR><C-w>:q!<CR>
-        tnoremap <silent> <Leader>n <C-W>N
     endif
 
+    tnoremap <silent> <Leader>n <C-\><C-N>
     tnoremap <Leader><Tab> <C-w><C-w>
+    tnoremap <Leader>w <C-W> "
 endif
 
 
