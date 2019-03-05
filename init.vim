@@ -2064,3 +2064,5 @@ else
         highlight LineNr guifg=#ff875f guibg=gray
     endif
 endif
+"匹配括号底色
+hi MatchParen guifg=#000000 ctermfg=16 guibg=#CDCDFD ctermbg=189 gui=NONE cterm=NONE
