@@ -1367,61 +1367,30 @@ endif
 
 "字体设置 
 "windows下空格为:而unix下要转译\,windows下字体的空格用下划线_
-if has('gui_running')
+
+
+if has('nvim')
     if has('win32')
-        set guifontset=
+        set guifont=Courier\ New:h12:cANSI
+    elseif has('unix')
+        "set guifont=Courier\ 14
+        "set guifont=Fira\ Code\ Light\ h12\ cANSI
+    endif
+else
+    if has('win32')
         if hostname() == "A12839"
             set guifont=Courier\ New:h12:cANSI
-            "设置中文为微软雅黑
-            "set guifontwide=Microsoft\ YaHei:h12
             set guifontwide=幼圆:b:h11:cGB2312
         elseif hostname() == "FENG-PC"
             set guifont=Courier\ New:h12:cANSI
-            "设置中文为微软雅黑
-            "set guifontwide=Microsoft\ YaHei:h12
             set guifontwide=黑体:b:h11:cGB2312
-            "set guifontwide=仿宋:b:h12:cGB2312
-            "set guifontwide=新宋体:b:h12:cGB2312
-            "set guifontwide=微软雅黑:h11:cGB2312
         else
-            "set guifont=Courier_New:h12:cANSI
-            "set guifont=Source_Code_Variable:h12:cANSI
             set guifont=Fira_Code_Light:h12:cANSI
             "启动时会弹出字体选择框，如果取消，则采用系统默认字体 
             "set guifont=* 
-            "Windows默认使用的字体，字体较粗 
-            "set guifont=Fixedsys 
-            "中文显示变形，字体较粗 
-            "set guifont=Monospace:h9 
-            "中文显示变形，字体较细 
-            "set guifont=Consolas:h9 
-            "中文显示变形，字体较细 
-            "set guifont=Lucida\ Console:h9 
-            "中文显示变形，字体较细 
-            "set guifont=Monaco:h9 
-            "中文显示变形，字体较细 
-            "set guifont=Andale\ Mono:h10 
-            "中文显示变形，字体较细 
-            "set guifont=Bitstream\ Vera\ Sans\ Mono:h9 
-            "需要运行修改版的gvim才能识别 
-            "set guifont=YaHei\ Consolas\ Hybrid:h9 
-            "如果guifontwide采用中文字体，汉字将自动使用guifontwide，英文自动使用guifont 
-            "set guifontwide=YaHei\ Consolas\ Hybrid:h9 
-            "设置中文为微软雅黑
-            "set guifontwide=Microsoft\ YaHei:h12
-            "set guifontwide=幼圆:b:h11:cGB2312
         endif
     elseif has('unix')
         set guifont=Courier\ 14
-    endif
-endif
-
-if has('nvim')
-    if hostname() == "FENG-PC" || hostname() == "A12839"
-        set guifont=Courier\ New:h12:cANSI
-        "设置中文为微软雅黑
-        "set guifontwide=Microsoft\ YaHei:h11
-        "set guifontwide=:h10:cGB2312
     endif
 endif
 
