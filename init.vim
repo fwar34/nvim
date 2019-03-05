@@ -2061,8 +2061,9 @@ if has('nvim')
     highlight LineNr guifg=#ff875f guibg=translate
 else 
     if has('gui_running')
-        highlight LineNr guifg=#ff875f guibg=gray
+        highlight LineNr guifg=#ff875f guibg=#3a3a3a
     endif
 endif
+
 "匹配括号底色
-highlight MatchParen guifg=#000000 ctermfg=16 guibg=#CDCDFD ctermbg=189 gui=NONE cterm=NONE
+highlight MatchParen guifg=#ff875f ctermfg=16 ctermbg=189
