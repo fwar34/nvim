@@ -1687,9 +1687,13 @@ set autoread
 " quickfix模式
 "autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 "代码补全 
-set completeopt=noinsert,menuone,noselect
+set completeopt=noinsert,menuone,noselect,preview
 "共享剪贴板  
-set clipboard+=unnamedplus
+if has('nvim')
+    set clipboard+=unnamedplus
+else
+    set clipboard+=unnamed
+endif
 "从不备份  
 set nobackup
 "make 运行
