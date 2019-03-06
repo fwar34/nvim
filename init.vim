@@ -102,6 +102,10 @@ augroup Format-Options
     "autocmd BufEnter * setlocal formatoptions=crqn2l1j
 augroup END
 
+"让vim显示行尾的空格
+highlight WhitespaceEOL ctermbg=red guibg=red 
+match WhitespaceEOL /\s\+$/
+
 "--------------------------------------------------------------------------
 " 
 "--------------------------------------------------------------------------
