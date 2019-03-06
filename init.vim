@@ -2025,7 +2025,12 @@ endfunction
 
 
 "行号颜色
-highlight LineNr guifg=#ff875f guibg=#262626 ctermfg=209
+if has('nvim')
+    highlight LineNr guifg=#ff875f guibg=translate ctermfg=209
+else
+    highlight LineNr guifg=#ff875f guibg=#262626 ctermfg=209
+endif
+
 
 "匹配括号底色
 "highlight MatchParen guifg=#ff875f ctermfg=16 ctermbg=189
