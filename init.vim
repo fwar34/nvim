@@ -1405,12 +1405,15 @@ endif
 "windows下空格为:而unix下要转译\,windows下字体的空格用下划线_
 
 
+set guifontset=
 if has('nvim')
     if has('win32')
         set guifont=Courier\ New:h12:cANSI
     elseif has('unix')
-        "set guifont=Courier\ 14
-        "set guifont=Fira\ Code\ Light\ h12\ cANSI
+        "set guifont=Fira\ Code:h14
+        Guifont Fira\ Code:h14
+        "set guifont=DejaVu\ Sans\ Mono:h11
+        "set linespace=4
     endif
 else
     if has('win32')
@@ -1426,7 +1429,8 @@ else
             "set guifont=*
         endif
     elseif has('unix')
-        set guifont=Courier\ 14
+        "set guifont=Courier\ 14
+        set guifont=Fira\ Code\ 14
     endif
 endif
 
