@@ -74,6 +74,15 @@ if has('win32') && !has('nvim')
     endif
 endif
 
+" 全屏nvim
+if has('nvim') && has('win32')
+    "call GuiWindowMaximized(1)
+    let g:GuiWindowFullScreen=1
+    "if exists('g:Gui')
+        "echom xxxxxx
+    "endif
+endif
+
 "if has("termguicolors")
     "fix bug for vim
     "set t_8f=[38;2;%lu;%lu;%lum
@@ -95,6 +104,12 @@ set wildmenu
 set nocompatible
 "高亮dos的特殊符号,如^M
 set ffs=unix
+
+if has('nvim')
+    "https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/
+    "turn off the GUI tabline
+    GuiTabline 0
+endif
 
 "禁止vim换行后自动添加的注释符号
 augroup Format-Options
@@ -1408,7 +1423,8 @@ endif
 set guifontset=
 if has('nvim')
     if has('win32')
-        set guifont=Courier\ New:h12:cANSI
+        "set guifont=Courier\ New:h12:cANSI
+        GuiFont! Courier\ New:h12:cANSI
     elseif has('unix')
         "set guifont=Fira\ Code:h14
         Guifont Fira\ Code:h14
