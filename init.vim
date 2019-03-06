@@ -910,6 +910,16 @@ if s:memory_enough
 endif
 
 "--------------------------------------------------------------------------
+" deoplete-tabnine 
+"--------------------------------------------------------------------------
+if has('win32')
+    Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1'  }
+else
+    Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh'  }
+endif
+
+
+"--------------------------------------------------------------------------
 " This script is for generating a .clang_complete that could be 
 " utilized by emacs irony-mode or company-clang mode.
 "--------------------------------------------------------------------------
