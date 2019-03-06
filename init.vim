@@ -93,6 +93,8 @@ set autochdir
 " vim 自身命令行模式智能补全
 set wildmenu
 set nocompatible
+"高亮dos的特殊符号,如^M
+set ffs=unix
 
 "禁止vim换行后自动添加的注释符号
 augroup Format-Options
@@ -100,11 +102,10 @@ augroup Format-Options
     autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
     " This can be done as well instead of the previous line, for setting formatoptions as you choose:
     "autocmd BufEnter * setlocal formatoptions=crqn2l1j
+    "让vim显示行尾的空格
+    "autocmd BufEnter * highlight WhitespaceEOL ctermbg=red guibg=red
+    "autocmd BufEnter * match WhitespaceEOL /\s\+$/
 augroup END
-
-"让vim显示行尾的空格
-highlight WhitespaceEOL ctermbg=red guibg=red
-match WhitespaceEOL /\s\+$/
 
 "--------------------------------------------------------------------------
 "
@@ -135,13 +136,11 @@ call plug#begin('~/.vim/plugged')
 " asyncrun
 "--------------------------------------------------------------------------
 Plug 'skywind3000/asyncrun.vim'
-
 " 自动打开 quickfix window ，高度为 6
 let g:asyncrun_open = 6
 " 任务结束时候响铃提醒
 let g:asyncrun_bell = 1
 let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml']
-
 nnoremap <Leader>vv :AsyncRun
 nnoremap <Leader>vt :AsyncStop<CR>
 "然后在 AsyncRun 命令行中，用 <root> 或者 $(VIM_ROOT)
@@ -155,6 +154,13 @@ nnoremap <silent> <Leader>ww :call asyncrun#quickfix_toggle(6)<CR>
 "
 "--------------------------------------------------------------------------
 Plug 'terryma/vim-expand-region'
+
+
+"--------------------------------------------------------------------------
+" 行尾空格处理
+"--------------------------------------------------------------------------
+Plug 'bronson/vim-trailing-whitespace'
+nnoremap <silent> <Leader><space> :FixWhitespace<CR>
 
 
 "--------------------------------------------------------------------------
