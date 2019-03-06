@@ -158,9 +158,11 @@ Plug 'terryma/vim-expand-region'
 
 "--------------------------------------------------------------------------
 " undo history
+" https://blog.csdn.net/liao20081228/article/details/80347623
 "--------------------------------------------------------------------------
 Plug 'sjl/gundo.vim'
 nnoremap <Leader>ud :GundoToggle<CR>
+let g:gundo_prefer_python3 = 1
 
 
 "--------------------------------------------------------------------------
