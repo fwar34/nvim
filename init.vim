@@ -2056,17 +2056,7 @@ endfunction
 
 
 "行号颜色
-if has('nvim')
-    "highlight LineNr guifg=#ff875f guibg=translate ctermfg=209
-    highlight LineNr guifg=#ff875f guibg=#262626 ctermfg=209
-else 
-    if has('gui_running')
-        "highlight LineNr guifg=#ff875f guibg=#3a3a3a
-        highlight LineNr guifg=#ff875f guibg=#262626
-    else
-        highlight LineNr ctermfg=209
-    endif
-endif
+highlight LineNr guifg=#ff875f guibg=#262626 ctermfg=209
 
 "匹配括号底色
 "highlight MatchParen guifg=#ff875f ctermfg=16 ctermbg=189
