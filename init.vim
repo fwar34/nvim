@@ -1128,10 +1128,10 @@ if (s:memory_enough)
     Plug 'tenfyzhong/CompleteParameter.vim'
     " Minimal setting
     inoremap <silent><expr> ( complete_parameter#pre_complete("()")
-    smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
-    imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
-    smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
-    imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+    "smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+    "imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+    "smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+    "imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
     " Goto next parameter and select it.
     nmap <c-j> <Plug>(complete_parameter#goto_next_parameter)
     imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
