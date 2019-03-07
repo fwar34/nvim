@@ -411,15 +411,9 @@ Plug 'Chun-Yang/vim-action-ag'
 
 
 "--------------------------------------------------------------------------
-" Vim 界定符自动补齐（delimitMate）插件
-"--------------------------------------------------------------------------
-"Plug 'Raimondi/delimitMate'
-
-
-"--------------------------------------------------------------------------
 " Vim 界定符自动补齐auto-pairs
 "--------------------------------------------------------------------------
-Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs', { 'tag': 'v2.0.0' }
 let g:AutoPairsShortcutToggle = '<Leader>pp'
 
 
@@ -731,8 +725,8 @@ let g:ale_cpp_cppcheck_options = ''
 "使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
 let g:ale_linters = { 'c++': ['clang'], 'c': ['clang'], 'python': ['pylint'] }
 
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "nmap sp <Plug>(ale_previous_wrap)
 "nmap sn <Plug>(ale_next_wrap)
 
@@ -1123,7 +1117,6 @@ endif
 "NOTE: If you use ultinsips, you must load ultisnips before this plugin. In other
 "words, if you use plug to load plugins, Plug 'SirVer/ultisnips' must
 "before Plug 'tenfyzhong/CompleteParameter.vim' in your vimrc.
-
 if (s:memory_enough)
     Plug 'tenfyzhong/CompleteParameter.vim'
     " Minimal setting
@@ -1141,36 +1134,18 @@ if (s:memory_enough)
     imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
     smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
     " Select next overload function.
-    nmap <m-d> <Plug>(complete_parameter#overload_down)
-    imap <m-d> <Plug>(complete_parameter#overload_down)
-    smap <m-d> <Plug>(complete_parameter#overload_down)
+    "nmap <m-d> <Plug>(complete_parameter#overload_down)
+    "imap <m-d> <Plug>(complete_parameter#overload_down)
+    "smap <m-d> <Plug>(complete_parameter#overload_down)
     " Select previous overload function.
-    nmap <m-u> <Plug>(complete_parameter#overload_up)
-    imap <m-u> <Plug>(complete_parameter#overload_up)
-    smap <m-u> <Plug>(complete_parameter#overload_up)
-
+    "nmap <m-u> <Plug>(complete_parameter#overload_up)
+    "imap <m-u> <Plug>(complete_parameter#overload_up)
+    "smap <m-u> <Plug>(complete_parameter#overload_up)
     "Can't work with plugin auto-pairs use the default mapping (
     "https://github.com/tenfyzhong/CompleteParameter.vim
     let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
     inoremap <buffer><silent> ) <C-R>=AutoPairsInsert(')')<CR>
 endif
-
-
-"--------------------------------------------------------------------------
-" minibufexpl
-"--------------------------------------------------------------------------
-"Plug 'fholgado/minibufexpl.vim'
- "显示/隐藏 MiniBufExplorer 窗口
-"nnoremap <Leader>mb :MBEToggle<cr>
-"nnoremap <Leader>mh :MBEbn<cr>
-"nnoremap <Leader>mq :MBEbp<cr>
- "minibufexpl插件的一般设置
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModSelTarget = 1
-"not auto start
-"let g:miniBufExplorerAutoStart = 0
 
 
 "--------------------------------------------------------------------------
@@ -1346,10 +1321,10 @@ augroup END
 " provide a handy way to preview tags, files and function signatures.
 "--------------------------------------------------------------------------
 Plug 'skywind3000/vim-preview'
-noremap <C-k> :PreviewScroll -1<cr>
-noremap <C-j> :PreviewScroll +1<cr>
-inoremap <C-k> <c-\><c-o>:PreviewScroll -1<cr>
-inoremap <C-j> <c-\><c-o>:PreviewScroll +1<cr>
+noremap <C-h> :PreviewScroll -1<cr>
+noremap <C-l> :PreviewScroll +1<cr>
+inoremap <C-h> <c-\><c-o>:PreviewScroll -1<cr>
+inoremap <C-l> <c-\><c-o>:PreviewScroll +1<cr>
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> q :PreviewClose<cr>
 noremap <F4> :PreviewSignature!<cr>
