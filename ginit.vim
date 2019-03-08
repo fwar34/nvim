@@ -1398,8 +1398,9 @@ endif
 set guifontset=
 if has('nvim')
     if has('win32')
-        set guifont=Courier\ New:h12:cANSI
-        "GuiFont! Courier\ New:h12:cANSI
+        "set guifont=Courier\ New:h12:cANSI
+        GuiFont! Courier\ New:h12:cANSI
+        "GuiFont! Consolas:h12
     elseif has('unix')
         "set guifont=Fira\ Code:h14
         "Guifont Fira\ Code:h14
@@ -1423,6 +1424,11 @@ else
         "set guifont=Courier\ 14
         set guifont=Fira\ Code\ 14
     endif
+endif
+
+"turn off the GUI tabline
+if has('nvim') && has('win32')
+    GuiTabline 0
 endif
 
 syntax on           " 语法高亮
@@ -1918,9 +1924,9 @@ if has('nvim')
     nnoremap <Leader>se :e $MYVIMRC<CR>
 else
     if has('win32')
-        nnoremap <Leader>se :e ~/AppData/Local/nvim/init.vim<CR>
+        nnoremap <Leader>se :e ~/AppData/Local/nvim/ginit.vim<CR>
     else
-        nnoremap <Leader>se :e ~/.config/nvim/init.vim<CR>
+        nnoremap <Leader>se :e ~/.config/nvim/ginit.vim<CR>
     endif
 endif
 "nnoremap <Leader>se :e ~/.vimrc<CR>
