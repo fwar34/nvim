@@ -74,15 +74,6 @@ if has('win32') && !has('nvim')
     endif
 endif
 
-" 全屏nvim
-if has('nvim')
-    call GuiWindowMaximized(1)
-    "let g:GuiWindowFullScreen=1
-    "if exists('g:Gui')
-        "echom xxxxxx
-    "endif
-endif
-
 " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
 if has('gui_running') || has('nvim')
     set mouse=a
@@ -1383,23 +1374,12 @@ if system('uname') == "Linux\n" && has('gui_running')
     set columns=110
 endif
 
-"字体设置
+"--------------------------------------------------------------------------
+" 字体设置 for vim
+"--------------------------------------------------------------------------
 "windows下空格为:而unix下要转译\,windows下字体的空格用下划线_
-
-
 set guifontset=
-if has('nvim')
-    if has('win32')
-        "set guifont=Courier\ New:h12:cANSI
-        GuiFont! Courier\ New:h12:cANSI
-        "GuiFont! Consolas:h12
-    elseif has('unix')
-        "set guifont=Fira\ Code:h14
-        "Guifont Fira\ Code:h14
-        "set guifont=DejaVu\ Sans\ Mono:h11
-        "set linespace=4
-    endif
-else
+if has('gui_running')
     if has('win32')
         if hostname() == "A12839"
             set guifont=Courier\ New:h12:cANSI
@@ -1418,12 +1398,6 @@ else
     endif
 endif
 
-if has('nvim')
-    "turn off the GUI tabline
-    GuiTabline 0
-    "reduce line space
-    GuiLinespace 1
-endif
 
 syntax on           " 语法高亮
 syntax enable
