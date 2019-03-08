@@ -164,6 +164,19 @@ let g:gundo_prefer_python3 = 1
 
 
 "--------------------------------------------------------------------------
+" cia                 改写函数参数
+" caa                 改写函数参数（包括逗号分隔）
+" dia                 删除函数参数
+" daa                 删除函数参数（包括逗号分隔）
+" via                 选取函数参数
+" vaa                 选取函数参数（包括逗号分隔）
+" yia                 复制函数参数
+" yaa                 复制函数参数（包括逗号分隔）
+"--------------------------------------------------------------------------
+Plug 'gaving/vim-textobj-argument'
+
+
+"--------------------------------------------------------------------------
 " 行尾空格处理
 "--------------------------------------------------------------------------
 Plug 'bronson/vim-trailing-whitespace'
@@ -741,11 +754,12 @@ hi! SpellRare gui=undercurl guisp=magenta
 "ii 和 ai ：缩进对象，同一个缩进层次的代码，可以用 vii 选中，dii / cii 删除或改写
 "if 和 af ：函数对象，可以用 vif / dif / cif 来选中/删除/改写函数的内容
 "--------------------------------------------------------------------------
+"Create your own text objects
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-syntax'
+"Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
-Plug 'sgur/vim-textobj-parameter'
+"Plug 'sgur/vim-textobj-parameter'  " required kana/vim-textobj-user
 
 
 "--------------------------------------------------------------------------
