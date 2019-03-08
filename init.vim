@@ -1491,13 +1491,13 @@ func SetPythonTitle()
     call append(line(".")+3, "\# Author: Feng")
 	call append(line(".")+4, "\# Created Time: ".strftime("%Y-%m-%d %H:%M"))
     "call append(line(".")+5, "\# Created Time: ".strftime("%Y-%m-%d",localtime()))
-    call append(line(".")+5, "\# Content: ")
+    call append(line(".")+5, "\# Content:")
     autocmd BufNewFile * normal G
 endfunc
 
 func InsertVimCommit()
     call append(line(".") - 1, "\"--------------------------------------------------------------------------")
-    call append(line(".") - 1, "\" ")
+    call append(line(".") - 1, "\"")
     call append(line(".") - 1, "\"--------------------------------------------------------------------------")
 endfunc
 nnoremap <silent> <Leader>ic :call InsertVimCommit()<CR>
@@ -1509,7 +1509,7 @@ func InsertTitle()
     call append(line(".")-1, " ****************************************************************************************/")
     call append(line(".")-1, "/**")
     call append(line(".")-1, " * @file ".expand("%"))
-    call append(line(".")-1, " * @brief ")
+    call append(line(".")-1, " * @brief")
     call append(line(".")-1, " *")
     call append(line(".")-1, " * @author liang.feng")
     call append(line(".")-1, " *")
