@@ -75,21 +75,13 @@ if has('win32') && !has('nvim')
 endif
 
 " 全屏nvim
-if has('nvim') && has('win32')
-    "call GuiWindowMaximized(1)
-    let g:GuiWindowFullScreen=1
+if has('nvim')
+    call GuiWindowMaximized(1)
+    "let g:GuiWindowFullScreen=1
     "if exists('g:Gui')
         "echom xxxxxx
     "endif
 endif
-
-"if has("termguicolors")
-    "fix bug for vim
-    "set t_8f=[38;2;%lu;%lu;%lum
-    "set t_8b=[48;2;%lu;%lu;%lum
-    "enable true color
-    "set termguicolors
-"endif
 
 " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
 if has('gui_running') || has('nvim')
@@ -1426,9 +1418,11 @@ else
     endif
 endif
 
-"turn off the GUI tabline
-if has('nvim') && has('win32')
+if has('nvim')
+    "turn off the GUI tabline
     GuiTabline 0
+    "reduce line space
+    GuiLinespace 1
 endif
 
 syntax on           " 语法高亮
@@ -1920,14 +1914,10 @@ nnoremap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nnoremap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nnoremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-if has('nvim')
-    nnoremap <Leader>se :e $MYVIMRC<CR>
+if has('win32')
+    nnoremap <Leader>se :e ~/AppData/Local/nvim/ginit.vim<CR>
 else
-    if has('win32')
-        nnoremap <Leader>se :e ~/AppData/Local/nvim/ginit.vim<CR>
-    else
-        nnoremap <Leader>se :e ~/.config/nvim/ginit.vim<CR>
-    endif
+    nnoremap <Leader>se :e ~/.config/nvim/ginit.vim<CR>
 endif
 "nnoremap <Leader>se :e ~/.vimrc<CR>
 "nnoremap <Leader>ss :source $MYVIMRC<CR>
