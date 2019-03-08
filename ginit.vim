@@ -8,15 +8,12 @@
 "--------------------------------------------------------------------------
 " Font settings
 "--------------------------------------------------------------------------
-if has('win32')
-    "set guifont=Courier\ New:h12:cANSI
+if has('win32') && (hostname() == "A12839" || hostname() == "FENG")
     GuiFont! Courier\ New:h12:cANSI
-    "GuiFont! Consolas:h12
-elseif has('unix')
-    "set guifont=Fira\ Code:h14
-    Guifont Fira\ Code:h14
-    "set guifont=DejaVu\ Sans\ Mono:h11
-    "set linespace=4
+else
+    "Guifont Fira\ Code:h12
+    GuiFont! Courier\ New:h12:cANSI
+    "set guifont=DejaVu\ Sans\ Mono:h12
 endif
 
 "turn off the GUI tabline
