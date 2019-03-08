@@ -8,12 +8,16 @@
 "--------------------------------------------------------------------------
 " Font settings
 "--------------------------------------------------------------------------
-if has('win32') && (hostname() == "A12839" || hostname() == "FENG")
+if hostname() == "A12839" || hostname() == "FENG"
     GuiFont! Courier\ New:h12:cANSI
 else
-    "Guifont Fira\ Code:h12
-    GuiFont! Courier\ New:h12:cANSI
-    "set guifont=DejaVu\ Sans\ Mono:h12
+    if has('win32')
+        "Guifont Fira\ Code:h12
+        GuiFont! Courier\ New:h12:cANSI
+        "set guifont=DejaVu\ Sans\ Mono:h12
+    else
+        Guifont Fira\ Code:h14:cANSI
+    endif
 endif
 
 "turn off the GUI tabline
@@ -23,3 +27,4 @@ GuiLinespace 1
 
 " 全屏nvim
 call GuiWindowMaximized(1)
+"call GuiWindowFullScreen(1) 

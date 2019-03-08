@@ -88,12 +88,6 @@ set nocompatible
 "高亮dos的特殊符号,如^M
 set ffs=unix
 
-"if has('nvim')
-    "https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/
-    "turn off the GUI tabline
-    "GuiTabline 0
-"endif
-
 "禁止vim换行后自动添加的注释符号
 augroup Format-Options
     autocmd!
