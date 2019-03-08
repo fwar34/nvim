@@ -1763,7 +1763,7 @@ set viminfo+=!
 " 带有如下符号的单词不要被换行分割
 set iskeyword+=_,$,@,%,#,-
 " 字符间插入的像素行数目
-set linespace=0
+set linespace=1
 " 增强模式中的命令行自动完成操作
 set wildmenu
 " 使回格键（backspace）正常处理indent, eol, start等
