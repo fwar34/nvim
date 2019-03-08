@@ -179,8 +179,8 @@ Plug 'gaving/vim-textobj-argument'
 "--------------------------------------------------------------------------
 " 行尾空格处理
 "--------------------------------------------------------------------------
-Plug 'bronson/vim-trailing-whitespace'
-nnoremap <silent> <Leader><space> :FixWhitespace<CR>
+"Plug 'bronson/vim-trailing-whitespace'
+"nnoremap <silent> <Leader><space> :FixWhitespace<CR>
 
 
 "--------------------------------------------------------------------------
