@@ -1888,10 +1888,14 @@ nnoremap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nnoremap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nnoremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-if has('win32')
-    nnoremap <Leader>se :e ~/AppData/Local/nvim/myinit.vim<CR>
+if has('nvim')
+    nnoremap <Leader>se :e $MYVIMRC<CR>
 else
-    nnoremap <Leader>se :e ~/.config/nvim/myinit.vim<CR>
+    if has('win32')
+        nnoremap <Leader>se :e ~/AppData/Local/nvim/init.vim<CR>
+    else
+        nnoremap <Leader>se :e ~/.config/nvim/init.vim<CR>
+    endif
 endif
 "nnoremap <Leader>se :e ~/.vimrc<CR>
 "nnoremap <Leader>ss :source $MYVIMRC<CR>
