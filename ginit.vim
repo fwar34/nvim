@@ -13,8 +13,9 @@ if hostname() == "A12839" || hostname() == "FENG"
 else
     if has('win32')
         "Guifont Fira\ Code:h12
-        GuiFont! Courier\ New:h12:cANSI
+        "GuiFont! Courier\ New:h12:cANSI
         "set guifont=DejaVu\ Sans\ Mono:h12
+        GuiFont Consolas:h12:cANSI
     else
         Guifont Fira\ Code:h14:cANSI
     endif
