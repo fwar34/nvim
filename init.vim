@@ -368,31 +368,31 @@ Plug 'rking/ag.vim'
 " ag的忽略文件在~/.agignore
 let g:ag_working_path_mode="r" "search from project root
 let g:ag_highlight=1
-nnoremap <silent> <Space>fa :Ag
-nnoremap <silent> <Space>fw :Ag <C-R>=expand("<cword>")<CR><CR>
-nnoremap <silent> <Space>fb :AgBuffer <C-R>=expand("<cword>")<CR><CR>
-nnoremap <silent> <Space>fc :AgFile
+nnoremap <Leader>fa :Ag 
+nnoremap <silent> <Leader>fw :Ag <C-R>=expand("<cword>")<CR><CR>
+nnoremap <silent> <Leader>fb :AgBuffer <C-R>=expand("<cword>")<CR><CR>
+nnoremap <Leader>fc :AgFile 
 
 "--------------------------------------------------------------------------
 " An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
 "--------------------------------------------------------------------------
 Plug 'dyng/ctrlsf.vim'
 "Input :CtrlSF in command line for you, just a handy shortcut.
-nmap <Leader>fa <Plug>CtrlSFPrompt
+nmap <Space>fa <Plug>CtrlSFPrompt
 "Input :CtrlSF in command line for you, just a handy shortcut.
-nmap <Leader>fv <Plug>CtrlSFVwordPath<CR>
+nmap <Space>fv <Plug>CtrlSFVwordPath<CR>
 "Like <Plug>CtrlSFVwordPath, but execute it immediately.
-nmap <Leader>fe <Plug>CtrlSFVwordExec<CR>
+nmap <Space>fe <Plug>CtrlSFVwordExec<CR>
 "Input :CtrlSF foo in command line where foo is word under the cursor.
-nmap <Leader>fw <Plug>CtrlSFCwordPath<CR>
+nmap <Space>fw <Plug>CtrlSFCwordPath<CR>
 "Like <Plug>CtrlSFCwordPath, but also add word boundary around searching word.
-nmap <Leader>fc <Plug>CtrlSFCCwordPath<CR>
+nmap <Space>fc <Plug>CtrlSFCCwordPath<CR>
 "Input :CtrlSF foo in command line where foo is the last search pattern of vim.
-nmap <Leader>fp <Plug>CtrlSFPwordPath<CR>
+nmap <Space>fp <Plug>CtrlSFPwordPath<CR>
 
-nnoremap <Leader>ft :CtrlSFOpen<CR>
-nnoremap <Leader>fn :CtrlSFToggle<CR>
-inoremap <Leader>fn <Esc>:CtrlSFToggle<CR>
+nnoremap <Space>ft :CtrlSFOpen<CR>
+nnoremap <Space>fn :CtrlSFToggle<CR>
+inoremap <Space>fn <Esc>:CtrlSFToggle<CR>
 let g:ctrlsf_auto_focus = {
             \ "at" : "done",
             \ "duration_less_than": 1000
