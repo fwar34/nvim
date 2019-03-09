@@ -373,31 +373,6 @@ nnoremap <silent> <Leader>fw :Ag <C-R>=expand("<cword>")<CR><CR>
 nnoremap <silent> <Leader>fb :AgBuffer <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>fc :AgFile 
 
-"--------------------------------------------------------------------------
-" An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
-"--------------------------------------------------------------------------
-Plug 'dyng/ctrlsf.vim'
-"Input :CtrlSF in command line for you, just a handy shortcut.
-nmap <Space>fa <Plug>CtrlSFPrompt
-"Input :CtrlSF in command line for you, just a handy shortcut.
-nmap <Space>fv <Plug>CtrlSFVwordPath<CR>
-"Like <Plug>CtrlSFVwordPath, but execute it immediately.
-nmap <Space>fe <Plug>CtrlSFVwordExec<CR>
-"Input :CtrlSF foo in command line where foo is word under the cursor.
-nmap <Space>fw <Plug>CtrlSFCwordPath<CR>
-"Like <Plug>CtrlSFCwordPath, but also add word boundary around searching word.
-nmap <Space>fc <Plug>CtrlSFCCwordPath<CR>
-"Input :CtrlSF foo in command line where foo is the last search pattern of vim.
-nmap <Space>fp <Plug>CtrlSFPwordPath<CR>
-
-nnoremap <Space>ft :CtrlSFOpen<CR>
-nnoremap <Space>fn :CtrlSFToggle<CR>
-inoremap <Space>fn <Esc>:CtrlSFToggle<CR>
-let g:ctrlsf_auto_focus = {
-            \ "at" : "done",
-            \ "duration_less_than": 1000
-            \ }
-
 
 "--------------------------------------------------------------------------
 "
