@@ -39,12 +39,20 @@ if has("autocmd")
 endif
 
 if !has('nvim')
-    set termwinsize=25*0
+    if hostname() == "DESKTOP-LL8PBC8"
+        set termwinsize=35*0
+    else
+        set termwinsize=25*0
+    endif
 endif
 
-" 启动全屏 win32 && vim
+" 启动全屏 (win32 && vim) 透明度可控
 if has('win32') && !has('nvim')
-    autocmd GUIEnter * simalt ~x
+    if hostname() == "DESKTOP-LL8PBC8"
+        set lines=40 columns=130
+    else
+        autocmd GUIEnter * simalt ~x
+    endif
 
     "200~250
     if executable("vimtweak.dll")
@@ -86,14 +94,16 @@ set autochdir
 set wildmenu
 set nocompatible
 "高亮dos的特殊符号,如^M
-set ffs=unix
+if has('unix')
+    set ffs=unix
+endif
 
 "禁止vim换行后自动添加的注释符号
 augroup Format-Options
     autocmd!
-    autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    "autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
     " This can be done as well instead of the previous line, for setting formatoptions as you choose:
-    "autocmd BufEnter * setlocal formatoptions=crqn2l1j
+    autocmd BufEnter * setlocal formatoptions=crqn2l1j
     "让vim显示行尾的空格
     "autocmd BufEnter * highlight WhitespaceEOL ctermbg=red guibg=red
     "autocmd BufEnter * match WhitespaceEOL /\s\+$/

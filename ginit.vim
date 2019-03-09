@@ -26,5 +26,9 @@ GuiTabline 0
 GuiLinespace 1
 
 " 全屏nvim
-call GuiWindowMaximized(1)
+if hostname() == "DESKTOP-LL8PBC8"
+    set lines=40 columns=130
+else
+    call GuiWindowMaximized(1)
+endif
 "call GuiWindowFullScreen(1) 
