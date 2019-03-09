@@ -15,7 +15,7 @@ else
         "Guifont Fira\ Code:h12
         "GuiFont! Courier\ New:h12:cANSI
         "set guifont=DejaVu\ Sans\ Mono:h12
-        GuiFont Consolas:h12:cANSI
+        GuiFont! Consolas:h12:cANSI
     else
         Guifont Fira\ Code:h14:cANSI
     endif
