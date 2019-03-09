@@ -1262,13 +1262,26 @@ nnoremap <Leader>di :SignifyDiff<CR>
 
 "--------------------------------------------------------------------------
 " vim-gutentags
+" https://zhuanlan.zhihu.com/p/36279445 (important)
 "--------------------------------------------------------------------------
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 
-let g:gutentags_modules = ['ctags', 'gtags_cscope']
-let g:gutentags_project_root = ['.root']
+let $GTAGSLABEL = 'native-pygments'
+"let $GTAGSLABEL = 'native'
+"let $GTAGSCONF = '~/.config/nvim/gtags.conf'
+
+"let g:gutentags_modules = ['ctags', 'gtags_cscope']
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 let g:gutentags_ctags_tagfile = '.tags'
+" 同时开启 ctags 和 gtags 支持：
+let g:gutentags_modules = []
+if executable('ctags')
+	let g:gutentags_modules += ['ctags']
+endif
+if executable('gtags-cscope') && executable('gtags')
+	let g:gutentags_modules += ['gtags_cscope']
+endif
 
 let g:gutentags_cache_dir = expand('~/.cache/tags')
 let g:gutentags_ctags_extra_args = []
@@ -1276,8 +1289,11 @@ let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-"https://zhuanlan.zhihu.com/p/36279445
-"let g:gutentags_auto_add_gtags_cscope = 0
+" change focus to quickfix window after search (optional).
+let g:gutentags_plus_switch = 1
+
+" 禁用 gutentags 自动加载 gtags 数据库的行为
+let g:gutentags_auto_add_gtags_cscope = 0
 
 " 错误排查：gutentags: gutentags: gtags-cscope job failed, returned: 1
 "这是因为 gutentags 调用 gtags 时，gtags 返回了错误值 1，具体是什么情况，
@@ -1288,12 +1304,13 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 "然后保存一下当前文件，触发 gtags 数据库更新，接下来你应该能看到一些讨厌的日志输出，
 "这里不够的话，~/.cache/tags 目录下还有对应项目名字的 log 文件，
 "打开看看 gtags 具体输出了什么，然后进行相应的处理。
-let g:gutentags_define_advanced_commands = 1
+"let g:gutentags_define_advanced_commands = 1
 
 "输出trace信息
 "let g:gutentags_trace = 1
 
 if has('win32')
+    " 如果使用 universal ctags 需要增加下面一行
     "let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 endif
 
@@ -1330,17 +1347,6 @@ autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> q :PreviewClose<cr>
 noremap <F4> :PreviewSignature!<cr>
 inoremap <F4> <c-\><c-o>:PreviewSignature!<cr>
-
-
-"--------------------------------------------------------------------------
-" https://zhuanlan.zhihu.com/p/36279445
-"--------------------------------------------------------------------------
-"let $GTAGSLABEL = 'native-pygments'
-if !has('win32') && executable('/usr/local/bin/ctags')
-    let $GTAGSLABEL = 'universal-ctags'
-endif
-"let $GTAGSCONF = '/path/to/share/gtags/gtags.conf'
-"let $GTAGSCONF = '~/.globalrc'
 
 
 "--------------------------------------------------------------------------
