@@ -1388,8 +1388,8 @@ if has('gui_running')
             set guifontwide=黑体:b:h11:cGB2312
         else
             set guifont=Fira_Code_Light:h12:cANSI
-            set guifont=Hack:h12:cANSI
-            set guifont=Hasklig:h12:cANSI
+            "set guifont=Hack:h12:cANSI
+            "set guifont=Hasklig:h12:cANSI
             "启动时会弹出字体选择框，如果取消，则采用系统默认字体
             "set guifont=*
         endif
