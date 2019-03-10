@@ -2049,9 +2049,9 @@ endif
 highlight MatchParen guifg=#ff875f ctermfg=209 ctermbg=244
 
 if has('win32')
-    source ~\AppData\Local\nvim\luatest.vim
-    source ~\AppData\Local\nvim\pythontest.vim
+    "source ~\AppData\Local\nvim\luatest.vim
+    "source ~\AppData\Local\nvim\pythontest.vim
 else
-    source ~/.config/nvim/luatest.vim
-    source ~/.config/nvim/pythontest.vim
+    "source ~/.config/nvim/luatest.vim
+    "source ~/.config/nvim/pythontest.vim
 endif
