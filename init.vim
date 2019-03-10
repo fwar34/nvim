@@ -288,6 +288,7 @@ let g:comfortable_motion_no_default_key_mappings = 1
 if (s:memory_enough)
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'tacahiroy/ctrlp-funky'
+    let g:ctrlp_map = '<Space>p'
     nnoremap <Space>ii :CtrlPFunky<Cr>
     " narrow the list down with a word under cursor
     nnoremap <Space>iw :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
