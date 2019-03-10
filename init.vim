@@ -1316,8 +1316,8 @@ augroup END
 " provide a handy way to preview tags, files and function signatures.
 "--------------------------------------------------------------------------
 Plug 'skywind3000/vim-preview'
-noremap <C-h> :PreviewScroll -1<cr>
-noremap <C-l> :PreviewScroll +1<cr>
+noremap <silent> <C-h> :PreviewScroll -1<cr>
+noremap <silent> <C-l> :PreviewScroll +1<cr>
 inoremap <C-h> <c-\><c-o>:PreviewScroll -1<cr>
 inoremap <C-l> <c-\><c-o>:PreviewScroll +1<cr>
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
