@@ -404,6 +404,7 @@ nnoremap <silent> <Leader>tb :TagbarToggle<CR>
 "关闭排序,即按标签本身在文件中的位置排序
 let g:tagbar_sort = 0
 let g:tagbar_autofocus = 1
+let g:tagbar_left = 1
 
 
 "--------------------------------------------------------------------------
