@@ -1248,7 +1248,8 @@ let $GTAGSLABEL = 'native-pygments'
 if has('win32')
     let $GTAGSCONF = expand('~/AppData/Local/nvim/gtags.conf.windows.663')
 else
-    let $GTAGSCONF = expand('~/.config/nvim/gtags.conf.unix.663')
+    "let $GTAGSCONF = expand('~/.config/nvim/gtags.conf.unix.663')
+    let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
 endif
 "let $GTAGSLABEL = 'native'
 
@@ -1290,7 +1291,7 @@ let g:gutentags_auto_add_gtags_cscope = 0
 "然后保存一下当前文件，触发 gtags 数据库更新，接下来你应该能看到一些讨厌的日志输出，
 "这里不够的话，~/.cache/tags 目录下还有对应项目名字的 log 文件，
 "打开看看 gtags 具体输出了什么，然后进行相应的处理。
-"let g:gutentags_define_advanced_commands = 1
+let g:gutentags_define_advanced_commands = 1
 
 "输出trace信息
 "let g:gutentags_trace = 1
