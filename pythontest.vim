@@ -7,25 +7,25 @@ if !has('python3')
     finish
 endif
 
-function! Reddit()
-python << PYTHON
+function! s:reddit()
+python3 << EOF
 
 # the vim module contains everything we need to interface with vim from
 # python. We need urllib2 for the web service consumer.
 import vim
 import json
-import urllib2
+import urllib.request
 import json
 
-TIMEOUT = 20
+TIMEOUT = 5
 URL = "http://reddit.com/.json"
 
 try:
     # Get the posts and parse the json response
-    response = urllib2.urlopen(URL, Node, TIMEOUT).read()
-    json_response = json.loads(response)
+    response = urllib.request.urlopen(URL, None, TIMEOUT).read()
+    json_response = json.loads(response.decode('utf-8'))
 
-    post = json_response.get("data", "").get("children", "")
+    posts = json_response.get("data", "").get("children", "")
     # vim.current.buffer is the current buffer. It's list-like object.
     # each line is an item in the list. We can loop through them delete
     # them, alter them etc.
@@ -54,9 +54,11 @@ try:
         vim.current.buffer.append("↓ %s    | comments: %s [%s]" % (down, comments, permalink,))
         # And last we append some "-" for visual appeal.
         vim.current.buffer.append(80 * "-")
-except Exception, e:
-    print e
+except Exception as e:
+    print(e)
 
-PYTHON
+EOF
 " Here the python code is closed. We can continue writing VimL or python again.
 endfunc
+
+command! -nargs=0 Reddit call s:reddit()
