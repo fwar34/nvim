@@ -1274,29 +1274,46 @@ nnoremap <Leader>di :SignifyDiff<CR>
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 
-if has('win32')
-    "let $GTAGSCONF = expand('~/AppData/Local/nvim/gtags.conf.windows.663')
-    "let $GTAGSCONF = expand('~/global/share/gtags/gtags.conf')
-else
-    "let $GTAGSCONF = expand('~/.config/nvim/gtags.conf.unix.663')
-    let $GTAGSLABEL = 'native-pygments'
-    let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
-endif
-"let $GTAGSLABEL = 'native'
-
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 let g:gutentags_cache_dir = expand('~/.cache/tags')
 let g:gutentags_ctags_tagfile = '.tags'
 let g:gutentags_exclude_project_root = [expand('~/.vim')]
 
+"有pygments的话对gtags添加其他语言的支持
+if executable('pygmentize')
+    let $GTAGSLABEL = 'native-pygments'
+    "let $GTAGSLABEL = 'native'
+    if has('win32')
+        let $GTAGSCONF = expand('~/global/share/gtags/gtags.conf')
+    else
+        let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+    endif
+endif
+
 " 同时开启 ctags 和 gtags 支持：
 let g:gutentags_modules = []
 if executable('ctags')
-	let g:gutentags_modules += ['ctags']
+    let g:gutentags_modules += ['ctags']
 endif
-if executable('gtags-cscope') && executable('gtags') && has('unix')
-	let g:gutentags_modules += ['gtags_cscope']
+if executable('gtags-cscope') && executable('gtags')
+    let g:gutentags_modules += ['gtags_cscope']
 endif
+
+function! s:my_gutentags_settings()
+    if &filetype == 'cpp' || &filetype == 'java'
+        if executable('gtags-cscope') && executable('gtags')
+            let g:gutentags_modules = ['ctags', 'gtags_cscope']
+        else
+            let g:gutentags_modules = ['ctags']
+        endif
+    else
+        let g:gutentags_modules = ['ctags']
+    endif
+endfunc
+
+augroup MyGutentModuleSettings
+    "autocmd FileType * call s:my_gutentags_settings()
+augroup END
 
 " 如果使用 universal ctags 需要增加下面两行
 " Universal Ctags support Wildcard in options.
@@ -1327,7 +1344,6 @@ let g:gutentags_define_advanced_commands = 1
 "输出trace信息
 "let g:gutentags_trace = 1
 
-
 let g:gutentags_plus_nomap = 1
 noremap <silent> <Leader>gs :GscopeFind s <C-R><C-W><cr>
 noremap <silent> <Leader>gg :GscopeFind g <C-R><C-W><cr>
@@ -1345,20 +1361,6 @@ augroup MyGutentagsStatusLineRefresher
     autocmd User GutentagsUpdating call lightline#update()
     autocmd User GutentagsUpdated call lightline#update()
 augroup END
-
-function! s:my_gutentags_settings()
-    if &filetype == 'cpp' || &filetype == 'java'
-        let g:gutentags_modules += ['ctags', 'gtags_cscope']
-    else
-        let g:gutentags_modules += ['ctags']
-    endif
-endfunc
-
-if has('win32')
-    augroup MyGutentModuleSettings
-        autocmd FileType * call s:my_gutentags_settings()
-    augroup END
-endif
 
 
 "--------------------------------------------------------------------------
