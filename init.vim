@@ -365,14 +365,43 @@ nnoremap <silent> <Leader>fh :FZF! ~<CR>
 "--------------------------------------------------------------------------
 " ag.vim
 "--------------------------------------------------------------------------
-Plug 'rking/ag.vim'
+"Plug 'rking/ag.vim'
 " ag的忽略文件在~/.agignore
-let g:ag_working_path_mode="r" "search from project root
-let g:ag_highlight=1
-nnoremap <Leader>fa :Ag 
-nnoremap <silent> <Leader>fw :Ag <C-R>=expand("<cword>")<CR><CR>
-nnoremap <silent> <Leader>fb :AgBuffer <C-R>=expand("<cword>")<CR><CR>
-nnoremap <Leader>fc :AgFile 
+"let g:ag_working_path_mode="r" "search from project root
+"let g:ag_highlight=1
+"nnoremap <Leader>fa :Ag 
+"nnoremap <silent> <Leader>fw :Ag <C-R>=expand("<cword>")<CR><CR>
+"nnoremap <silent> <Leader>fb :AgBuffer <C-R>=expand("<cword>")<CR><CR>
+"nnoremap <Leader>fc :AgFile 
+
+
+"--------------------------------------------------------------------------
+" An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
+"--------------------------------------------------------------------------
+Plug 'dyng/ctrlsf.vim'
+if executable('ag')
+    let g:ctrlsf_ackprg = 'ag'
+endif
+"Input :CtrlSF in command line for you, just a handy shortcut.
+nmap <Leader>fa <Plug>CtrlSFPrompt
+"Input :CtrlSF in command line for you, just a handy shortcut.
+nmap <Leader>fv <Plug>CtrlSFVwordPath<CR>
+"Like <Plug>CtrlSFVwordPath, but execute it immediately.
+nmap <Leader>fe <Plug>CtrlSFVwordExec<CR>
+"Input :CtrlSF foo in command line where foo is word under the cursor.
+nmap <Leader>fw <Plug>CtrlSFCwordPath<CR>
+"Like <Plug>CtrlSFCwordPath, but also add word boundary around searching word.
+nmap <Leader>fc <Plug>CtrlSFCCwordPath<CR>
+"Input :CtrlSF foo in command line where foo is the last search pattern of vim.
+nmap <Leader>fp <Plug>CtrlSFPwordPath<CR>
+
+nnoremap <Leader>ft :CtrlSFOpen<CR>
+nnoremap <Leader>fn :CtrlSFToggle<CR>
+inoremap <Leader>fn <Esc>:CtrlSFToggle<CR>
+let g:ctrlsf_auto_focus = {
+            \ "at" : "done",
+            \ "duration_less_than": 1000
+            \ }
 
 
 "--------------------------------------------------------------------------
@@ -454,8 +483,11 @@ let g:Lf_ShortcutF = '<Leader>ff'
 let g:Lf_ShortcutB = '<Leader>bs'
 nnoremap <silent> <Leader>db :bd<CR>
 nnoremap <silent> <Leader>do :on<CR>
-noremap <silent> <Leader>rm :LeaderfMru<cr>
-noremap <silent> <Leader>ii :LeaderfFunction!<cr>
+noremap <silent> <Leader>rm :LeaderfMru<CR>
+noremap <silent> <Leader>ii :LeaderfFunction!<CR>
+noremap <silent> <Leader>hi :LeaderfHistoryCmd<CR>
+noremap <silent> <Leader>hp :LeaderfHelp<CR>
+noremap <silent> <Leader>li :LeaderfLine<CR>
 "noremap <Leader>tb :LeaderfTag<cr>
 "let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_PreviewCode = 1
@@ -643,7 +675,8 @@ augroup END
 
 "--------------------------------------------------------------------------
 " 以引号输入为例，说明如何使用这个插件。按下 "，会自动变成双引号""，此时光标位于双引号的中间，等待插入文本，
-" 文本插入结束以后，通常我们希望把光标置于右边引号的后面，此时，再按一次 "，光标就会跳转到右边引号的后面，等待我们继续输入文本。
+" 文本插入结束以后，通常我们希望把光标置于右边引号的后面，此时，再按一次 "，
+" 光标就会跳转到右边引号的后面，等待我们继续输入文本。
 "如果想要删除包含文本的一对引号/括号，可以使用 ds<delimiter> 来删除（<delimiter> 代表具体要删除的符号）。
 "--------------------------------------------------------------------------
 Plug 'tpope/vim-surround'
