@@ -1244,12 +1244,12 @@ nnoremap <Leader>di :SignifyDiff<CR>
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 
-let $GTAGSLABEL = 'native-pygments'
 if has('win32')
     "let $GTAGSCONF = expand('~/AppData/Local/nvim/gtags.conf.windows.663')
-    let $GTAGSCONF = expand('~/global/share/gtags/gtags.conf')
+    "let $GTAGSCONF = expand('~/global/share/gtags/gtags.conf')
 else
     "let $GTAGSCONF = expand('~/.config/nvim/gtags.conf.unix.663')
+    let $GTAGSLABEL = 'native-pygments'
     let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
 endif
 "let $GTAGSLABEL = 'native'
