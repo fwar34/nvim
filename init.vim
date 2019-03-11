@@ -381,7 +381,6 @@ nnoremap <silent> <Leader>fh :FZF! ~<CR>
 Plug 'dyng/ctrlsf.vim'
 if executable('ag')
     let g:ctrlsf_ackprg = 'ag'
-
     if has('win32')
         let g:ctrlsf_extra_backend_args = {  'ag': '--path-to-ignore ~/AppData/Local/nvim/agignore'  }
     else
@@ -390,6 +389,7 @@ if executable('ag')
 endif
 "if you want CtrlSF use regular expression by default (like Ack/Ag), you can set it to 1.
 let g:ctrlsf_regex_pattern = 1
+let g:ctrlsf_auto_focus = { "at": "start" }
 
 "Input :CtrlSF in command line for you, just a handy shortcut.
 nmap <Leader>fa <Plug>CtrlSFPrompt
@@ -407,13 +407,12 @@ nmap <Leader>fp <Plug>CtrlSFPwordPath<CR>
 nnoremap <Leader>ft :CtrlSFOpen<CR>
 nnoremap <Leader>fn :CtrlSFToggle<CR>
 inoremap <Leader>fn <Esc>:CtrlSFToggle<CR>
-let g:ctrlsf_auto_focus = { "at": "start" }
 
 
 "--------------------------------------------------------------------------
 "
 "--------------------------------------------------------------------------
-Plug 'Chun-Yang/vim-action-ag'
+"Plug 'Chun-Yang/vim-action-ag'
 "Normal Mode:
 "gagiw to search the word
 "gagi' to search the words inside single quotes.
