@@ -61,4 +61,4 @@ EOF
 " Here the python code is closed. We can continue writing VimL or python again.
 endfunc
 
-command! -nargs=0 reddit call s:reddit()
+command! -nargs=0 Reddit call s:reddit()
