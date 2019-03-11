@@ -225,8 +225,8 @@ vmap <silent> <C-y> <Plug>DictVSearch
 nmap <silent> <Leader>yd <Plug>DictWSearch
 "--可视化模式下，<Leader>w 即可翻译选中的文本，并且在Dict新窗口显示
 vmap <silent> <Leader>yd <Plug>DictWVSearch
-nnoremap <Leader>yi :Dict
-nnoremap <Leader>yw :DictW
+nnoremap <Leader>yi :Dict 
+nnoremap <Leader>yw :DictW 
 
 
 "--------------------------------------------------------------------------
