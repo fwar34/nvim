@@ -1246,7 +1246,8 @@ Plug 'skywind3000/gutentags_plus'
 
 let $GTAGSLABEL = 'native-pygments'
 if has('win32')
-    let $GTAGSCONF = expand('~/AppData/Local/nvim/gtags.conf.windows.663')
+    "let $GTAGSCONF = expand('~/AppData/Local/nvim/gtags.conf.windows.663')
+    let $GTAGSCONF = expand('~/global/share/gtags/gtags.conf')
 else
     "let $GTAGSCONF = expand('~/.config/nvim/gtags.conf.unix.663')
     let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
@@ -1263,7 +1264,7 @@ let g:gutentags_modules = []
 if executable('ctags')
 	let g:gutentags_modules += ['ctags']
 endif
-if executable('gtags-cscope') && executable('gtags')
+if executable('gtags-cscope') && executable('gtags') && has('unix')
 	let g:gutentags_modules += ['gtags_cscope']
 endif
 
@@ -1315,13 +1316,19 @@ augroup MyGutentagsStatusLineRefresher
     autocmd User GutentagsUpdated call lightline#update()
 augroup END
 
-augroup MyGutentEnableSettings
-    "autocmd FileType vim let g:gutentags_modules = ['ctags']
-    "autocmd FileType lua let g:gutentags_modules = ['ctags']
-    "autocmd FileType cpp let g:gutentags_modules = ['ctags', 'gtags_cscope']
-    "autocmd FileType java let g:gutentags_modules = ['ctags', 'gtags_cscope']
-    "autocmd FileType python let g:gutentags_modules = ['ctags', 'gtags_cscope']
-augroup END
+function! s:my_gutentags_settings()
+    if &filetype == 'cpp' || &filetype == 'java'
+        let g:gutentags_modules += ['ctags', 'gtags_cscope']
+    else
+        let g:gutentags_modules += ['ctags']
+    endif
+endfunc
+
+if has('win32')
+    augroup MyGutentModuleSettings
+        autocmd FileType * call s:my_gutentags_settings()
+    augroup END
+endif
 
 
 "--------------------------------------------------------------------------
