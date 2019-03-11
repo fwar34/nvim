@@ -1940,6 +1940,7 @@ nnoremap <Leader>rs :source ~/.my.vim<cr> :rviminfo ~/.my.viminfo<cr>
 "nnoremap <leader>rs :source ~/.my.vim<cr>
 
 nnoremap <Leader>so :so %<CR>
+nnoremap <Leader>pf :py3file %<CR>
 
 "--------------------------------------------------------------------------
 "
@@ -2116,4 +2117,12 @@ if has('win32')
 else
     "source ~/.config/nvim/luatest.vim
     "source ~/.config/nvim/pythontest.vim
+endif
+
+if has('python3')
+    let g:python_version = 3
+elseif has('python')
+    let g:python_version = 2
+else
+    let g:python_version = 0
 endif
