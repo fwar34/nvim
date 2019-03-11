@@ -1245,12 +1245,18 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 
 let $GTAGSLABEL = 'native-pygments'
+if has('win32')
+    let $GTAGSCONF = expand('~/AppData/Local/nvim/gtags.conf.windows')
+else
+    let $GTAGSCONF = expand('~/.config/nvim/gtags.conf.unix')
+endif
 "let $GTAGSLABEL = 'native'
-"let $GTAGSCONF = '~/.config/nvim/gtags.conf'
 
-"let g:gutentags_modules = ['ctags', 'gtags_cscope']
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_cache_dir = expand('~/.cache/tags')
 let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_exclude_project_root = [expand('~/.vim')]
+
 " 同时开启 ctags 和 gtags 支持：
 let g:gutentags_modules = []
 if executable('ctags')
@@ -1260,11 +1266,14 @@ if executable('gtags-cscope') && executable('gtags')
 	let g:gutentags_modules += ['gtags_cscope']
 endif
 
-let g:gutentags_cache_dir = expand('~/.cache/tags')
-let g:gutentags_ctags_extra_args = []
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+" Universal Ctags support Wildcard in options.
+let g:gutentags_ctags_extra_args = ['--fields=*', '--extras=*', '--all-kinds=*']
+" 如果使用 universal ctags 需要增加下面一行
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+
+"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+"let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 " change focus to quickfix window after search (optional).
 let g:gutentags_plus_switch = 1
@@ -1286,10 +1295,6 @@ let g:gutentags_auto_add_gtags_cscope = 0
 "输出trace信息
 "let g:gutentags_trace = 1
 
-if has('win32')
-    " 如果使用 universal ctags 需要增加下面一行
-    "let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
-endif
 
 let g:gutentags_plus_nomap = 1
 noremap <silent> <Leader>gs :GscopeFind s <C-R><C-W><cr>
@@ -1310,11 +1315,11 @@ augroup MyGutentagsStatusLineRefresher
 augroup END
 
 augroup MyGutentEnableSettings
-    autocmd FileType vim let g:gutentags_enabled = 0 "disable gutentags
-    autocmd FileType lua let g:gutentags_enabled = 0 "disable gutentags
-    autocmd FileType cpp let g:gutentags_enabled = 1 
-    autocmd FileType java let g:gutentags_enabled = 1 
-    autocmd FileType python let g:gutentags_enabled = 1 
+    "autocmd FileType vim let g:gutentags_modules = ['ctags']
+    "autocmd FileType lua let g:gutentags_modules = ['ctags']
+    "autocmd FileType cpp let g:gutentags_modules = ['ctags', 'gtags_cscope']
+    "autocmd FileType java let g:gutentags_modules = ['ctags', 'gtags_cscope']
+    "autocmd FileType python let g:gutentags_modules = ['ctags', 'gtags_cscope']
 augroup END
 
 
