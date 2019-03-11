@@ -11,7 +11,7 @@ function! s:reddit()
 python3 << EOF
 
 # the vim module contains everything we need to interface with vim from
-# python. We need urllib2 for the web service consumer.
+# python. We need urllib.request for the web service consumer.
 import vim
 import json
 import urllib.request
