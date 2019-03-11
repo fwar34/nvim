@@ -1246,9 +1246,9 @@ Plug 'skywind3000/gutentags_plus'
 
 let $GTAGSLABEL = 'native-pygments'
 if has('win32')
-    let $GTAGSCONF = expand('~/AppData/Local/nvim/gtags.conf.windows')
+    let $GTAGSCONF = expand('~/AppData/Local/nvim/gtags.conf.windows.663')
 else
-    let $GTAGSCONF = expand('~/.config/nvim/gtags.conf.unix')
+    let $GTAGSCONF = expand('~/.config/nvim/gtags.conf.unix.663')
 endif
 "let $GTAGSLABEL = 'native'
 
@@ -1266,9 +1266,9 @@ if executable('gtags-cscope') && executable('gtags')
 	let g:gutentags_modules += ['gtags_cscope']
 endif
 
+" 如果使用 universal ctags 需要增加下面两行
 " Universal Ctags support Wildcard in options.
 let g:gutentags_ctags_extra_args = ['--fields=*', '--extras=*', '--all-kinds=*']
-" 如果使用 universal ctags 需要增加下面一行
 let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
 "let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
