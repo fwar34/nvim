@@ -1875,9 +1875,10 @@ set undofile
 nnoremap <Leader>ss :mksession! ~/.my.vim<cr> :wviminfo! ~/.my.viminfo<cr>
 "nnoremap <leader>sv :mksession! ~/.my.vim<cr>
 " 恢复快捷键
-nnoremap <leader>rs :source ~/.my.vim<cr> :rviminfo ~/.my.viminfo<cr>
+nnoremap <Leader>rs :source ~/.my.vim<cr> :rviminfo ~/.my.viminfo<cr>
 "nnoremap <leader>rs :source ~/.my.vim<cr>
 
+nnoremap <Leader>so :so %<CR>
 
 "--------------------------------------------------------------------------
 "
