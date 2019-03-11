@@ -398,10 +398,7 @@ nmap <Leader>fp <Plug>CtrlSFPwordPath<CR>
 nnoremap <Leader>ft :CtrlSFOpen<CR>
 nnoremap <Leader>fn :CtrlSFToggle<CR>
 inoremap <Leader>fn <Esc>:CtrlSFToggle<CR>
-let g:ctrlsf_auto_focus = {
-            \ "at" : "done",
-            \ "duration_less_than": 1000
-            \ }
+let g:ctrlsf_auto_focus = { "at": "start" }
 
 
 "--------------------------------------------------------------------------
