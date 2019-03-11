@@ -1309,6 +1309,14 @@ augroup MyGutentagsStatusLineRefresher
     autocmd User GutentagsUpdated call lightline#update()
 augroup END
 
+augroup MyGutentEnableSettings
+    autocmd FileType vim let g:gutentags_enabled = 0 "disable gutentags
+    autocmd FileType lua let g:gutentags_enabled = 0 "disable gutentags
+    autocmd FileType cpp let g:gutentags_enabled = 1 
+    autocmd FileType java let g:gutentags_enabled = 1 
+    autocmd FileType python let g:gutentags_enabled = 1 
+augroup END
+
 
 "--------------------------------------------------------------------------
 " 使用 vim-preview 插件高效的在 quickfix 中先快速预览所有结果，再有针对性的打开必要文件
