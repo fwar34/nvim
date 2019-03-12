@@ -83,7 +83,7 @@ if has('win32') && !has('nvim')
 endif
 
 " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
-if has('gui_running') || has('nvim')
+if has('gui_running')
     set mouse=a
 else
     set mouse=
@@ -384,7 +384,7 @@ if executable('ag')
     if has('win32')
         let g:ctrlsf_extra_backend_args = {  'ag': '--path-to-ignore ~/AppData/Local/nvim/agignore'  }
     else
-        let g:ctrlsf_extra_backend_args = {  'ag': '--path-to-ignore ~/.config/nvim/agignore'  }
+        let g:ctrlsf_extra_backend_args = {  'ag': '--path-to-agignore ~/.config/nvim/agignore'  }
     endif
 endif
 "if you want CtrlSF use regular expression by default (like Ack/Ag), you can set it to 1.
