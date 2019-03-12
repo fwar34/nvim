@@ -1308,19 +1308,16 @@ if executable('gtags-cscope') && executable('gtags')
 endif
 
 function! s:my_gutentags_settings()
-    if &filetype == 'cpp' || &filetype == 'java'
-        if executable('gtags-cscope') && executable('gtags')
-            let g:gutentags_modules = ['ctags', 'gtags_cscope']
-        else
-            let g:gutentags_modules = ['ctags']
-        endif
+    "not gutentags for vim
+    if &filetype == 'vim' 
+        let g:gutentags_enabled = 0
     else
-        let g:gutentags_modules = ['ctags']
+        let g:gutentags_enabled = 1
     endif
 endfunc
 
 augroup MyGutentModuleSettings
-    "autocmd FileType * call s:my_gutentags_settings()
+    autocmd FileType * call s:my_gutentags_settings()
 augroup END
 
 " 如果使用 universal ctags 需要增加下面两行

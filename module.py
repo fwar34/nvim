@@ -12,7 +12,7 @@ import json
 
 def print_python_version():
     python_version = vim.eval('g:python_version')
-    print("Python version {}" % python_version)
+    print("Python version %s" % python_version)
 
 def _get(url):
     return urllib.request.urlopen(url, None, 5).read().strip().decode()
