@@ -207,26 +207,26 @@ endif
 "--------------------------------------------------------------------------
 " 翻译
 "--------------------------------------------------------------------------
-"Plug 'ianva/vim-youdao-translater'
-"vnoremap <silent> <C-y> :<C-u>Ydv<CR>
-"nnoremap <silent> <C-y> :<C-u>Ydc<CR>
-"noremap <leader>yd :<C-u>Yde<CR>
+Plug 'ianva/vim-youdao-translater'
+vnoremap <silent> <C-y> :<C-u>Ydv<CR>
+nnoremap <silent> <C-y> :<C-u>Ydc<CR>
+noremap <leader>yd :<C-u>Yde<CR>
 
 
 "--------------------------------------------------------------------------
 " 翻译
 "--------------------------------------------------------------------------
-Plug 'iamcco/dict.vim'
+"Plug 'iamcco/dict.vim'
 "--普通模式下，<Leader>d 即可翻译光标下的文本，并在命令行回显
-nmap <silent> <C-y> <Plug>DictSearch
+"nmap <silent> <C-y> <Plug>DictSearch
 "--可视化模式下，<Leader>d 即可翻译选中的文本，并在命令行回显
-vmap <silent> <C-y> <Plug>DictVSearch
+"vmap <silent> <C-y> <Plug>DictVSearch
 "--普通模式下，<Leader>w 即可翻译光标下的文本，并且在Dict新窗口显示
-nmap <silent> <Leader>yd <Plug>DictWSearch
+"nmap <silent> <Leader>yd <Plug>DictWSearch
 "--可视化模式下，<Leader>w 即可翻译选中的文本，并且在Dict新窗口显示
-vmap <silent> <Leader>yd <Plug>DictWVSearch
-nnoremap <Leader>yi :Dict 
-nnoremap <Leader>yw :DictW 
+"vmap <silent> <Leader>yd <Plug>DictWVSearch
+"nnoremap <Leader>yi :Dict 
+"nnoremap <Leader>yw :DictW 
 
 
 "--------------------------------------------------------------------------
@@ -979,6 +979,7 @@ Plug 'WenxiJin/.clang_complete'
 
 "--------------------------------------------------------------------------
 " 彩虹括号 for vim
+"\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
 "--------------------------------------------------------------------------
 if (s:memory_enough) "&& !has('nvim')
     Plug 'luochen1990/rainbow', { 'tag': 'v3.3.1' }
@@ -986,7 +987,7 @@ if (s:memory_enough) "&& !has('nvim')
     let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
     let g:rainbow_conf = {
                 \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-                \	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+                \	'ctermfgs': ['red', 'yellow', 'cyan', 'magenta'],
                 \	'operators': '_,_',
                 \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
                 \	'separately': {
