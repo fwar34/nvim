@@ -4,7 +4,7 @@
 "let s:root_dir = expand('<sfile>:h')
 let s:plugin_root_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
-python << PYTHON
+python3 << EOF
 import vim
 import sys
 import os.path
@@ -16,4 +16,4 @@ python_root_dir = normpath(join(plugin_root_dir, '..', 'python'))
 print(python_root_dir)
 sys.path.insert(0, python_root_dir)
 import sample
-PYTHON
+EOF
