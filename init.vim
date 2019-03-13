@@ -1823,7 +1823,7 @@ filetype indent on
 " 保存全局变量
 set viminfo+=!
 " 带有如下符号的单词不要被换行分割
-set iskeyword+=_,$,@,%,#,-
+"set iskeyword+=_,$,@,%,#,-
 " 字符间插入的像素行数目
 set linespace=1
 " 增强模式中的命令行自动完成操作
