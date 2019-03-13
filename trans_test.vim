@@ -1,6 +1,5 @@
 if !exists(v:true) | echo join([1, 3], ';') | endif
 
-
 let s:curpos = getpos('.')
 let s:row = s:curpos[1]
 let s:col = s:curpos[2]
@@ -16,16 +15,30 @@ echo s:row s:col
 "echo col('.')
 "echo getline('.')
 
-" ((s*ss(123)))
+" ((s23)))
 " "xx*xx"123""
+echo "--------------------"
+
+function s:match(symbol)
+    if a:symbol == "\"" || a:symbol == "\'" || a:symbol == "\`" || a:symbol == "<" || a:symbol == "[" || s:symbol == "("
+            return 1
+        else
+            return 0
+        endif
+    endif
+endfunc
+
 for s:index in range(s:col, 0, -1)
     let s:symbol = strcharpart(getline('.')[s:index - 1:], 0, 1)
     echo s:symbol
-    if s:index == 3 | break | endif
+    "if s:index == 3 | break | endif
     "if s:symbol == '\"' || s:symbol == '\'' || s:symbol = '<' || s:symbol = '(' || s:symbol = '['
-        "break;
+    "if s:symbol != '-' | break | endif
+    if s:symbol == "\"" || s:symbol == "\'" || s:symbol == "\`" || s:symbol == "<" 
+        break
+    endif
 endfor
 
 echo "--------------------"
-echo s:index
+echo s:index 
 echo s:symbol
