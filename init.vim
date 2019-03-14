@@ -1983,11 +1983,13 @@ onoremap in< :<C-U>normal! f<vi<<CR>
 onoremap il( :<C-U>normal! $F)vi)<CR>
 onoremap il" :<C-U>normal! $F"hvi"<CR>
 onoremap il' :<C-U>normal! $F'hvi'<CR>
-onoremap il} :<C-U>normal! $F}vi}<CR>
-onoremap il> :<C-U>normal! $F>vi><CR>
+onoremap il{ :<C-U>normal! $F}vi}<CR>
+onoremap il< :<C-U>normal! $F>vi><CR>
 
-" "lslsl"lslsl"lslsl"
-" (lslsl)lslsl(lslsl)
+" "lslsl"lslsl"lslsl"x
+" (lslsl)lslsl(lslsl)x
+" {lslsl}lslsl{lslsl}x
+" <lslsl>lslsl<lslsl>x
 
 
 "--------------------------------------------------------------------------
