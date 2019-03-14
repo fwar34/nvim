@@ -15,10 +15,10 @@ if !exists(v:true) | echo join([1, 3], ';') | endif
 " xxx"
 "<"
 " "xx*xx"12""
-"++"
+"3"
 
 function! s:match_char(symbol)
-    if a:symbol == "\"" || a:symbol == "\'" || a:symbol == "\`" || a:symbol == "<" || a:symbol == "[" || s:symbol == "("
+    if a:symbol == "\"" || a:symbol == "\'" || a:symbol == "\`" || a:symbol == "<" || a:symbol == "[" || a:symbol == "("
         return a:symbol
     else
         return 1
@@ -40,7 +40,7 @@ endfunc
 function! s:find_left()
     "排除光标在第一个字符的情况
     if search("[\"`'(<[]", 'nb', line(".")) == 0 | return 1 | endif
-    for l:index in range(s:col, 1, -1)
+    for l:index in range(s:col - 1, 1, -1)
         let l:symbol = strcharpart(getline('.')[l:index - 1:], 0, 1)
         let l:match_return = s:match_char(l:symbol)
         if l:match_return != 1 | return l:match_return | endif
@@ -55,7 +55,6 @@ function! s:find_right(symbol_left)
             if s:symbol_right == a:symbol_left
                 let l:delete_length = l:index - s:col
                 execute "normal " . printf("%dx", l:delete_length)
-                echo "findit"
                 break
             endif
         endfor
@@ -84,21 +83,21 @@ function! s:find_right(symbol_left)
     endif
 endfunc
 
-function! s:my_delete()
+function! My_delete()
     let s:curpos = getpos('.')
     let s:row = s:curpos[1]
     let s:col = s:curpos[2]
     "echo s:curpos
     "echo s:row s:col
     let s:last_col_of_line = len(getline('.'))
-    let s:symbol_left = s:find_left()
-    if s:symbol_left != 1
-        echo "find_left return" . s:symbol_left
-        call s:find_right(s:symbol_left)
+    let l:symbol_left = s:find_left()
+    if l:symbol_left != 1
+        echo "find_left return" . l:symbol_left
+        call s:find_right(l:symbol_left)
     endif
 endfunc
 
-call s:my_delete()
+"call s:my_delete()
 
 echo "--------------------"
 echo '--------------------'
