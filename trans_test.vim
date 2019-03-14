@@ -12,33 +12,25 @@ if !exists(v:true) | echo join([1, 3], ';') | endif
 "echo col('.')
 "echo getline('.')
 
-" "xx*xx"123""
-echo "--------------------"
+" xxx"
+"<"
+" "xx*xx"12""
+"++"
 
-function! s:match_char(a:symbol)
-    if a:symbol == "\""
-        return "\""
-    elseif a:symbol == "\'"
-        return "\'"
-    elseif a:symbol == "\`"
-        return "\`"
-    elseif a:symbol == "<"
-        return "<"
-    elseif a:symbol == "["
-        return "["
-    elseif s:symbol == "("
-        return "("
+function! s:match_char(symbol)
+    if a:symbol == "\"" || a:symbol == "\'" || a:symbol == "\`" || a:symbol == "<" || a:symbol == "[" || s:symbol == "("
+        return a:symbol
     else
         return 1
     endif
 endfunc
 
-function! s:is_close(a:symbol)
-    if s:match_return == "(" && a:symbol == ")"
+function! s:is_close(symbol_left, symbol)
+    if a:symbol_left == "(" && a:symbol == ")"
         return 1
-    elseif s:match_return == "<" && a:symbol == ">"
+    elseif a:symbol_left == "<" && a:symbol == ">"
         return 1
-    elseif s:match_return == "[" && a:symbol == "]"
+    elseif a:symbol_left == "[" && a:symbol == "]"
         return 1
     else
         return 0
@@ -46,22 +38,21 @@ function! s:is_close(a:symbol)
 endfunc
 
 function! s:find_left()
+    "排除光标在第一个字符的情况
+    if search("[\"`'(<[]", 'nb', line(".")) == 0 | return 1 | endif
     for l:index in range(s:col, 1, -1)
-        "get char under the cursor
-        let s:symbol = strcharpart(getline('.')[l:index - 1:], 0, 1)
-        let s:match_return = s:match_char(s:symbol)
-        if s:match_return != 1
-            break
-        endif
+        let l:symbol = strcharpart(getline('.')[l:index - 1:], 0, 1)
+        let l:match_return = s:match_char(l:symbol)
+        if l:match_return != 1 | return l:match_return | endif
     endfor
 endfunc
 
-function! s:find_right()
+function! s:find_right(symbol_left)
     echo "enter find_right"
-    if s:match_return == "\"" || s:match_result == "\'" || s:match_result == "\`"
+    if a:symbol_left == "\"" || a:symbol_left == "\'" || a:symbol_left == "\`"
         for l:index in range(s:col, s:last_col_of_line, 1)
             let s:symbol_right = strcharpart(getline('.')[l:index - 1:], 0, 1)
-            if s:symbol_right == s:match_return
+            if s:symbol_right == a:symbol_left
                 let l:delete_length = l:index - s:col
                 execute "normal " . printf("%dx", l:delete_length)
                 echo "findit"
@@ -72,11 +63,23 @@ function! s:find_right()
         let l:same_count = 0
         for l:index in range(s:col, s:last_col_of_line, 1)
             let s:symbol_right = strcharpart(getline('.')[l:index - 1:], 0, 1)
-            if s:symbol_right == s:match_return
+            if s:symbol_right == a:symbol_left
                 let l:same_count += 1
             else
-                " (333*(s23)))
-                if s:is_close(s:symbol_right) == 1
+                " ((333))
+                " <<11<aaa<333>>>>
+                " [11[aa[bb[cc]]]]
+                if s:is_close(a:symbol_left, s:symbol_right) == 1
+                    if l:same_count == 0
+                        let l:delete_length = l:index - s:col
+                        "execute "normal " . printf("%dx", l:delete_length)
+                        execute "normal " . l:delete_length . "x"
+                        break
+                    else
+                        let l:same_count -= 1
+                    endif
+                endif
+            endif
         endfor
     endif
 endfunc
@@ -88,10 +91,10 @@ function! s:my_delete()
     "echo s:curpos
     "echo s:row s:col
     let s:last_col_of_line = len(getline('.'))
-    call s:find_left()
-    if s:match_return != 1
-        echo "find_left return" . s:match_return
-        call s:find_right()
+    let s:symbol_left = s:find_left()
+    if s:symbol_left != 1
+        echo "find_left return" . s:symbol_left
+        call s:find_right(s:symbol_left)
     endif
 endfunc
 
@@ -100,5 +103,4 @@ call s:my_delete()
 echo "--------------------"
 echo '--------------------'
 "echo `--------------------`
-echo s:symbol
 
