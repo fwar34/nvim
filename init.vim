@@ -1846,6 +1846,7 @@ set matchtime=1
 set scrolloff=3
 " 高亮显示普通txt文件（需要txt.vim脚本）
 au BufRead,BufNewFile *  setfiletype txt
+set fileformat=unix
 
 
 "--------------------------------------------------------------------------
@@ -1978,11 +1979,14 @@ onoremap in' :<C-U>normal! f'lvi'<CR>
 onoremap in{ :<C-U>normal! f{vi{<CR>
 onoremap in< :<C-U>normal! f<vi<<CR>
 "在上一个括号内(inside last parentheses)
-onoremap il( :<C-U>normal! F)vi)<CR>
-onoremap il" :<C-U>normal! F"hvi"<CR>
-onoremap il' :<C-U>normal! F'hvi'<CR>
-onoremap il} :<C-U>normal! F}vi}<CR>
-onoremap il> :<C-U>normal! F>vi><CR>
+onoremap il( :<C-U>normal! $F)vi)<CR>
+onoremap il" :<C-U>normal! $F"hvi"<CR>
+onoremap il' :<C-U>normal! $F'hvi'<CR>
+onoremap il} :<C-U>normal! $F}vi}<CR>
+onoremap il> :<C-U>normal! $F>vi><CR>
+
+" "lslsl"lslsl"lslsl"
+" (lslsl)lslsl(lslsl)
 
 
 "--------------------------------------------------------------------------
@@ -2124,3 +2128,5 @@ elseif has('python')
 else
     let g:python_version = 0
 endif
+
+source trans_test.vim

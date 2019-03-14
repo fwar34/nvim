@@ -1,4 +1,4 @@
-if !exists(v:true) | echo join([1, 3], ';') | endif
+"if !exists(v:true) | echo join([1, 3], ';') | endif
 
 "echo s:last_col_of_line
 
@@ -92,14 +92,14 @@ function! My_delete()
     let s:last_col_of_line = len(getline('.'))
     let l:symbol_left = s:find_left()
     if l:symbol_left != 1
-        echo "find_left return" . l:symbol_left
+        "echo "find_left return" . l:symbol_left
         call s:find_right(l:symbol_left)
     endif
 endfunc
 
 "call s:my_delete()
 
-echo "--------------------"
-echo '--------------------'
+"echo "--------------------"
+"echo '--------------------'
 "echo `--------------------`
 
