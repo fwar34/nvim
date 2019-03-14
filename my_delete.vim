@@ -48,7 +48,7 @@ function! s:find_left()
 endfunc
 
 function! s:find_right(symbol_left)
-    echo "enter find_right"
+    "echo "enter find_right"
     if a:symbol_left == "\"" || a:symbol_left == "\'" || a:symbol_left == "\`"
         for l:index in range(s:col, s:last_col_of_line, 1)
             let s:symbol_right = strcharpart(getline('.')[l:index - 1:], 0, 1)
@@ -83,7 +83,7 @@ function! s:find_right(symbol_left)
     endif
 endfunc
 
-function! s:MyFirstDelete()
+function! s:my_delete()
     let s:curpos = getpos('.')
     let s:row = s:curpos[1]
     let s:col = s:curpos[2]
@@ -97,9 +97,15 @@ function! s:MyFirstDelete()
     endif
 endfunc
 
-"call s:my_delete()
-if !hasmapto('<Plug>MydeleteMyFirstdelete')
-  nnoremap <unique> <Leader>md  <Plug>MydeleteMyFirstdelete
+
+"command -nargs=1  MyDelete  :call s:my_delete(<q-args>, 0)
+"if !exists(":MyDelete")
+  "command -nargs=0 MyDelete :call s:my_delete()
+"endif
+
+nnoremap <Plug>Mydelete :call <SID>my_delete()<CR>
+if !hasmapto('<Plug>Mydelete')
+  nmap <silent> <Leader>md <Plug>Mydelete
 endif
 
 "echo ("--------------------")
