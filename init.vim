@@ -1823,6 +1823,7 @@ filetype indent on
 " 保存全局变量
 set viminfo+=!
 " 带有如下符号的单词不要被换行分割
+"set iskeyword=@,48-57,_,192-255,_,a-z,A-Z
 "set iskeyword+=_,$,@,%,#,-
 " 字符间插入的像素行数目
 set linespace=1
@@ -2115,10 +2116,10 @@ highlight MatchParen guifg=#ff875f ctermfg=209 ctermbg=244
 
 if has('win32')
     "source ~\AppData\Local\nvim\luatest.vim
-    "source ~\AppData\Local\nvim\pythontest.vim
+    source ~\AppData\Local\nvim\pythontest.vim
 else
     "source ~/.config/nvim/luatest.vim
-    "source ~/.config/nvim/pythontest.vim
+    source ~/.config/nvim/pythontest.vim
 endif
 
 if has('python3')
@@ -2129,4 +2130,3 @@ else
     let g:python_version = 0
 endif
 
-source trans_test.vim

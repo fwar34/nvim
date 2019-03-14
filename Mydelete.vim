@@ -83,7 +83,7 @@ function! s:find_right(symbol_left)
     endif
 endfunc
 
-function! My_delete()
+function! s:MyFirstDelete()
     let s:curpos = getpos('.')
     let s:row = s:curpos[1]
     let s:col = s:curpos[2]
@@ -98,8 +98,10 @@ function! My_delete()
 endfunc
 
 "call s:my_delete()
+if !hasmapto('<Plug>MydeleteMyFirstdelete')
+  nnoremap <unique> <Leader>md  <Plug>MydeleteMyFirstdelete
+endif
 
-"echo "--------------------"
+"echo ("--------------------")
 "echo '--------------------'
 "echo `--------------------`
-
