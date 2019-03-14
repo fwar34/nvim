@@ -17,14 +17,6 @@
 " "xx*xx"12""
 "3"
 
-function! s:match_char(symbol)
-    if a:symbol == "\"" || a:symbol == "\'" || a:symbol == "\`" || a:symbol == "<" || a:symbol == "[" || a:symbol == "("
-        return a:symbol
-    else
-        return 1
-    endif
-endfunc
-
 function! s:is_close(symbol_left, symbol)
     if a:symbol_left == "(" && a:symbol == ")"
         return 1
@@ -37,9 +29,44 @@ function! s:is_close(symbol_left, symbol)
     endif
 endfunc
 
+function! s:match_char(symbol)
+    if a:symbol =~ "\"" || a:symbol =~ "\'" || a:symbol =~ "\`"
+        return [1, a:symbol]
+    elseif a:symbol =~ "<" || a:symbol =~ "[" || a:symbol =~ "("
+        return [2, a:symbol]
+    elseif a:symbol =~ ">" || a:symbol =~ "]" || a:symbol =~ ")"
+        return [3, a:symbol]
+    else
+        return [0]
+    endif
+endfunc
+"echo s:match_char('(')
+
+"set(setsetl<3[ccc]33>sl)xd*fsd<sdfsf>33f"
+function! s:find_left() "HHHHHHHHHHH
+    "排除光标在第一个字符的情况
+    if search("[\"`'(<[]", 'nb', line(".")) == 0 | return 1 | endif
+    let l:same_count = 0
+    for l:index in range(s:col - 1, 1, -1)
+        let l:symbol = strcharpart(getline('.')[l:index - 1:], 0, 1)
+        let l:match_return = s:match_char(l:symbol)
+        if l:match_return[0] == 1 | return l:match_return[1] | endif
+        if l:match_return[0] == 2
+            if l:same_count == 0 
+                return l:match_return[1]
+            else
+                let l:same_count += 1
+            endif
+        endif
+        "if l:match_return != 1 | return l:match_return | endif
+
+    endfor
+endfunc
+"/////////////////////////////////
 function! s:find_left()
     "排除光标在第一个字符的情况
     if search("[\"`'(<[]", 'nb', line(".")) == 0 | return 1 | endif
+    let l:same_count = 0
     for l:index in range(s:col - 1, 1, -1)
         let l:symbol = strcharpart(getline('.')[l:index - 1:], 0, 1)
         let l:match_return = s:match_char(l:symbol)
@@ -92,7 +119,7 @@ function! s:my_delete()
     let s:last_col_of_line = len(getline('.'))
     let l:symbol_left = s:find_left()
     if l:symbol_left != 1
-        "echo "find_left return" . l:symbol_left
+        echo "find_left return" . l:symbol_left
         call s:find_right(l:symbol_left)
     endif
 endfunc
