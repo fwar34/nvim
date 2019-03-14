@@ -42,7 +42,7 @@ function! s:match_char(symbol)
 endfunc
 "echo s:match_char('(')
 
-"set(setsetl<3[ccc]33>sl)xd*fsd<sdfsf>33f"
+"se(t(setsetl<3[ccc]33>sl)xd*fs)d<sdfsf>33f"
 function! s:find_left() "HHHHHHHHHHH
     "排除光标在第一个字符的情况
     if search("[\"`'(<[]", 'nb', line(".")) == 0 | return 1 | endif
@@ -50,30 +50,23 @@ function! s:find_left() "HHHHHHHHHHH
     for l:index in range(s:col - 1, 1, -1)
         let l:symbol = strcharpart(getline('.')[l:index - 1:], 0, 1)
         let l:match_return = s:match_char(l:symbol)
+
+        "\"\'\`
         if l:match_return[0] == 1 | return l:match_return[1] | endif
+        "<([
         if l:match_return[0] == 2
             if l:same_count == 0 
                 return l:match_return[1]
             else
-                let l:same_count += 1
+                let l:same_count -= 1
             endif
+        ">)]
+        elseif l:match_return[0] == 3
+            let l:same_count += 1
         endif
-        "if l:match_return != 1 | return l:match_return | endif
-
     endfor
 endfunc
 "/////////////////////////////////
-function! s:find_left()
-    "排除光标在第一个字符的情况
-    if search("[\"`'(<[]", 'nb', line(".")) == 0 | return 1 | endif
-    let l:same_count = 0
-    for l:index in range(s:col - 1, 1, -1)
-        let l:symbol = strcharpart(getline('.')[l:index - 1:], 0, 1)
-        let l:match_return = s:match_char(l:symbol)
-        if l:match_return != 1 | return l:match_return | endif
-    endfor
-endfunc
-
 function! s:find_right(symbol_left)
     "echo "enter find_right"
     if a:symbol_left == "\"" || a:symbol_left == "\'" || a:symbol_left == "\`"
