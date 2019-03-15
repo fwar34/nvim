@@ -656,14 +656,14 @@ let g:lightline = {
 " syntax color
 "--------------------------------------------------------------------------
 Plug 'https://github.com/fwar34/vim-color-wombat256.git'
-
-
-"--------------------------------------------------------------------------
-" vim themes
-"--------------------------------------------------------------------------
 Plug 'tomasr/molokai'
 Plug 'jnurmine/Zenburn'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
+Plug 'ajh17/Spacegray.vim'
+"Plug 'vim-scripts/wombat256.vim'
+"Plug 'vim-scripts/Wombat'
+"Plug 'dsolstad/vim-wombat256i'
+"Plug 'flazz/vim-colorschemes'
 
 
 "--------------------------------------------------------------------------
@@ -707,7 +707,9 @@ let g:Powerline_colorscheme='solarized256'
 "
 "--------------------------------------------------------------------------
 "vimdoc中文
-Plug 'https://github.com/yianwillis/vimcdoc.git'
+if !has('nvim')
+    Plug 'https://github.com/yianwillis/vimcdoc.git'
+endif
 
 
 "--------------------------------------------------------------------------
@@ -1876,7 +1878,7 @@ if &term =~ '256color'
     "       screen.
     "             " see also
     "             http://snk.tuxfamily.org/log/vim-256color-bce.html
-    "set t_ut=
+    set t_ut=
 endif
 "
 "if exists('$TMUX')
@@ -1895,11 +1897,10 @@ if !has('nvim')
     else
         "set term=screen-256color
         "set term=xterm-256color
+        set term=$TERM
     endif
 endif
 
-"colorscheme codeschool
-colorscheme wombat256
 
 
 "-----------------------------------------------------
@@ -2137,3 +2138,13 @@ else
     let g:python_version = 0
 endif
 
+"colorscheme spacegray
+"colorscheme molokai
+"colorscheme wombat256i
+"colorscheme codeschool
+"colorscheme molokai
+colorscheme wombat256
+"colorscheme wombat
+"colorscheme wombat256mod
+"let g:molokai_original = 1
+"let g:rehash256 = 1
