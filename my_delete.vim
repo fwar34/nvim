@@ -32,9 +32,11 @@ endfunc
 function! s:MatchChar(symbol)
     if a:symbol =~ "\"" || a:symbol =~ "\'" || a:symbol =~ "\`"
         return [1, a:symbol]
-    elseif a:symbol =~ "<" || a:symbol =~ "[" || a:symbol =~ "("
+    "elseif a:symbol =~ "<" || a:symbol =~ "[" || a:symbol =~ "("
+    elseif a:symbol =~ "[" || a:symbol =~ "("
         return [2, a:symbol]
-    elseif a:symbol =~ ">" || a:symbol =~ "]" || a:symbol =~ ")"
+    "elseif a:symbol =~ ">" || a:symbol =~ "]" || a:symbol =~ ")"
+    elseif a:symbol =~ "]" || a:symbol =~ ")"
         return [3, a:symbol]
     else
         return [0]
