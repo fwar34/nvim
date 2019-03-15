@@ -2039,7 +2039,7 @@ if has('terminal') || has('nvim')
 
     tnoremap <silent> <Leader>n <C-\><C-N>
     tnoremap <Leader><Tab> <C-w><C-w>
-    tnoremap <Leader>w <C-W> "
+    "tnoremap <Leader>w <C-W> "
 endif
 
 
