@@ -1825,9 +1825,8 @@ filetype indent on
 set viminfo+=!
 " 带有如下符号的单词不要被换行分割
 "set iskeyword=@,48-57,_,192-255,_,a-z,A-Z
-if has('win32')
-    set iskeyword+=_,$,@,%,#
-endif
+"set iskeyword+=_,$,@,%,#
+set iskeyword+=_
 " 字符间插入的像素行数目
 set linespace=1
 " 增强模式中的命令行自动完成操作
