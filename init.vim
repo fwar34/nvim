@@ -121,6 +121,7 @@ nnoremap <silent> <Space>qm <C-z>
 let mapleader = ";"
 let g:mapleader = ";"
 
+nnoremap <Space>bo :browse oldfiles<CR>
 
 "--------------------------------------------------------------------------
 " Plugins begin
