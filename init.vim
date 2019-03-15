@@ -38,13 +38,13 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-if !has('nvim')
-    if hostname() == "DESKTOP-LL8PBC8"
-        set termwinsize=35*0
-    else
-        set termwinsize=25*0
-    endif
-endif
+"if !has('nvim')
+    "if hostname() == "DESKTOP-LL8PBC8"
+        "set termwinsize=35*0
+    "else
+        "set termwinsize=25*0
+    "endif
+"endif
 
 " 启动全屏 (win32 && vim) 透明度可控
 if has('win32') && !has('nvim')
@@ -144,7 +144,7 @@ let g:asyncrun_open = 6
 " 任务结束时候响铃提醒
 let g:asyncrun_bell = 1
 let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml']
-nnoremap <Leader>vv :AsyncRun
+nnoremap <Leader>vv :AsyncRun 
 nnoremap <Leader>vt :AsyncStop<CR>
 "然后在 AsyncRun 命令行中，用 <root> 或者 $(VIM_ROOT)
 "来表示项目所在路径，于是我们可以定义按 F7 编译整个项目
@@ -2021,20 +2021,23 @@ if has('terminal') || has('nvim')
         if has('nvim')
             nnoremap <silent> <Leader>tm :term zsh<CR> :startinsert<CR>
         else
-            nnoremap <silent> <Leader>tm :term zsh<CR>
+            "nnoremap <silent> <Leader>tm :term ++curwin<CR>
+            nnoremap <silent> <Leader>tm :tab term<CR>
         endif
     else
         if has('nvim')
             nnoremap <silent> <Leader>tm :term powershell<CR> :startinsert<CR>
         else
-            nnoremap <silent> <Leader>tm :term powershell<CR>
+            "nnoremap <silent> <Leader>tm :tab term powershell<CR>
+            nnoremap <silent> <Leader>tm :tab term<CR>
         endif
     endif
 
     if has('nvim')
         tnoremap <silent> <Leader>g exit<CR>
     else
-        tnoremap <silent> <Leader>g exit<CR><C-w>:q!<CR>
+        "tnoremap <silent> <Leader>g exit<CR><C-w>:q!<CR>
+        tnoremap <silent> <Leader>g exit<CR>
     endif
 
     tnoremap <silent> <Leader>n <C-\><C-N>

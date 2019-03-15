@@ -43,6 +43,7 @@ endfunc
 "echo s:MatchChar('(')
 
 "se(t(setsetl<3[ccc]33>sl)xd*fs)d<sdfsf>33f"
+"auto it = (>()lsldlf)
 function! s:FindLeft() "HHHHHHHHHHH
     "排除光标在第一个字符的情况
     if search("[\"`'(<[]", 'nb', line(".")) == 0 | return 1 | endif
