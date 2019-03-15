@@ -17,7 +17,7 @@
 " "xx*xx"12""
 "3"
 
-function! s:is_close(symbol_left, symbol)
+function! s:IsClose(symbol_left, symbol)
     if a:symbol_left == "(" && a:symbol == ")"
         return 1
     elseif a:symbol_left == "<" && a:symbol == ">"
@@ -29,7 +29,7 @@ function! s:is_close(symbol_left, symbol)
     endif
 endfunc
 
-function! s:match_char(symbol)
+function! s:MatchChar(symbol)
     if a:symbol =~ "\"" || a:symbol =~ "\'" || a:symbol =~ "\`"
         return [1, a:symbol]
     elseif a:symbol =~ "<" || a:symbol =~ "[" || a:symbol =~ "("
@@ -40,16 +40,16 @@ function! s:match_char(symbol)
         return [0]
     endif
 endfunc
-"echo s:match_char('(')
+"echo s:MatchChar('(')
 
 "se(t(setsetl<3[ccc]33>sl)xd*fs)d<sdfsf>33f"
-function! s:find_left() "HHHHHHHHHHH
+function! s:FindLeft() "HHHHHHHHHHH
     "排除光标在第一个字符的情况
     if search("[\"`'(<[]", 'nb', line(".")) == 0 | return 1 | endif
     let l:same_count = 0
     for l:index in range(s:col - 1, 1, -1)
         let l:symbol = strcharpart(getline('.')[l:index - 1:], 0, 1)
-        let l:match_return = s:match_char(l:symbol)
+        let l:match_return = s:MatchChar(l:symbol)
 
         "\"\'\`
         if l:match_return[0] == 1 | return l:match_return[1] | endif
@@ -67,7 +67,7 @@ function! s:find_left() "HHHHHHHHHHH
     endfor
 endfunc
 "/////////////////////////////////
-function! s:find_right(symbol_left)
+function! s:FindRight(symbol_left)
     "echo "enter find_right"
     if a:symbol_left == "\"" || a:symbol_left == "\'" || a:symbol_left == "\`"
         for l:index in range(s:col, s:last_col_of_line, 1)
@@ -88,7 +88,7 @@ function! s:find_right(symbol_left)
                 " ((333))
                 " <<11<aaa<333>>>>
                 " [11[aa[bb[cc]]]]
-                if s:is_close(a:symbol_left, s:symbol_right) == 1
+                if s:IsClose(a:symbol_left, s:symbol_right) == 1
                     if l:same_count == 0
                         let l:delete_length = l:index - s:col
                         "execute "normal " . printf("%dx", l:delete_length)
@@ -103,27 +103,27 @@ function! s:find_right(symbol_left)
     endif
 endfunc
 
-function! s:my_delete()
+function! s:MyDelete()
     let s:curpos = getpos('.')
     let s:row = s:curpos[1]
     let s:col = s:curpos[2]
     "echo s:curpos
     "echo s:row s:col
     let s:last_col_of_line = len(getline('.'))
-    let l:symbol_left = s:find_left()
+    let l:symbol_left = s:FindLeft()
     if l:symbol_left != 1
-        echo "find_left return" . l:symbol_left
-        call s:find_right(l:symbol_left)
+        "echo "find_left return" . l:symbol_left
+        call s:FindRight(l:symbol_left)
     endif
 endfunc
 
 
-"command -nargs=1  MyDelete  :call s:my_delete(<q-args>, 0)
+"command -nargs=1  MyDelete  :call s:MyDelete(<q-args>, 0)
 "if !exists(":MyDelete")
-  "command -nargs=0 MyDelete :call s:my_delete()
+  "command -nargs=0 MyDelete :call s:MyDelete()
 "endif
 
-nnoremap <Plug>Mydelete :call <SID>my_delete()<CR>
+nnoremap <Plug>Mydelete :call <SID>MyDelete()<CR>
 if !hasmapto('<Plug>Mydelete')
   nmap <silent> <Leader>md <Plug>Mydelete
 endif
