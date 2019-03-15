@@ -1825,7 +1825,9 @@ filetype indent on
 set viminfo+=!
 " 带有如下符号的单词不要被换行分割
 "set iskeyword=@,48-57,_,192-255,_,a-z,A-Z
-"set iskeyword+=_,$,@,%,#,-
+if has('win32')
+    set iskeyword+=_,$,@,%,#
+endif
 " 字符间插入的像素行数目
 set linespace=1
 " 增强模式中的命令行自动完成操作
@@ -1929,7 +1931,7 @@ endif
 " 环境恢复
 "--------------------------------------------------------------------------
 " 设置环境保存项
-set sessionoptions="blank,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
+set sessionoptions="blank,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize,unix,slash"
 " 保存 undo 历史。必须先行创建 .undo_history/
 set undodir=~/.undo_history/
 set undofile
