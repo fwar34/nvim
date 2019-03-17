@@ -1423,6 +1423,16 @@ nnoremap <Leader>tn :tnext<CR>
 " 反向遍历同名标签
 nnoremap <Leader>tp :tprevious<CR>
 
+"colorscheme spacegray
+"colorscheme molokai
+"colorscheme wombat256i
+"colorscheme codeschool
+"colorscheme molokai
+colorscheme wombat256
+"colorscheme wombat
+"colorscheme wombat256mod
+"let g:molokai_original = 1
+"let g:rehash256 = 1
 
 "--------------------------------------------------------------------------
 " 显示相关
@@ -2138,13 +2148,3 @@ else
     let g:python_version = 0
 endif
 
-"colorscheme spacegray
-"colorscheme molokai
-"colorscheme wombat256i
-"colorscheme codeschool
-"colorscheme molokai
-colorscheme wombat256
-"colorscheme wombat
-"colorscheme wombat256mod
-"let g:molokai_original = 1
-"let g:rehash256 = 1
