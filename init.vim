@@ -154,6 +154,14 @@ nnoremap <silent> <Leader>ww :call asyncrun#quickfix_toggle(6)<CR>
 
 
 "--------------------------------------------------------------------------
+" 超级速查表-编程语言、框架和开发工具的速查表，单个文件包含一切你需要知道的东西
+"--------------------------------------------------------------------------
+Plug 'skywind3000/awesome-cheatsheets'
+"Plug 'LeCoupa/awesome-cheatsheets'
+nnoremap <Leader>sa :e ~/.vim/plugged/awesome-cheatsheets/<CR>
+
+
+"--------------------------------------------------------------------------
 "
 "--------------------------------------------------------------------------
 Plug 'terryma/vim-expand-region'
