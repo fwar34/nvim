@@ -1337,7 +1337,7 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 let g:gutentags_plus_switch = 1
 
 " 禁用 gutentags 自动加载 gtags 数据库的行为
-let g:gutentags_auto_add_gtags_cscope = 0
+"let g:gutentags_auto_add_gtags_cscope = 0
 
 " 错误排查：gutentags: gutentags: gtags-cscope job failed, returned: 1
 "这是因为 gutentags 调用 gtags 时，gtags 返回了错误值 1，具体是什么情况，
