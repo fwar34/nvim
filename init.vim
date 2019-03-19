@@ -2041,16 +2041,16 @@ if has('terminal') || has('nvim')
             nnoremap <silent> <Leader>tm :term zsh<CR> :startinsert<CR>
         else
             "nnoremap <silent> <Leader>tm :term ++curwin<CR>
-            "nnoremap <silent> <Leader>tm :tab term<CR>
-            nnoremap <silent> <Leader>tm :term ++curwin<CR>
+            nnoremap <silent> <Leader>tm :tab term<CR>
+            "nnoremap <silent> <Leader>tm :term ++curwin<CR>
         endif
     else
         if has('nvim')
             nnoremap <silent> <Leader>tm :term powershell<CR> :startinsert<CR>
         else
             "nnoremap <silent> <Leader>tm :tab term powershell<CR>
-            "nnoremap <silent> <Leader>tm :tab term<CR>
-            nnoremap <silent> <Leader>tm :term ++curwin<CR>
+            nnoremap <silent> <Leader>tm :tab term<CR>
+            "nnoremap <silent> <Leader>tm :term ++curwin<CR>
         endif
     endif
 
