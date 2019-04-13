@@ -1304,7 +1304,8 @@ let g:gutentags_exclude_project_root = [expand('~/.vim')]
 
 "有pygments的话对gtags添加其他语言的支持
 if executable('pygmentize')
-    let $GTAGSLABEL = 'native-pygments'
+    "let $GTAGSLABEL = 'native-pygments'
+    let $GTAGSLABEL = 'pygments'
     "let $GTAGSLABEL = 'native'
     if has('win32')
         let $GTAGSCONF = expand('~/global/share/gtags/gtags.conf')
