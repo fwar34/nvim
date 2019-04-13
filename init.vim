@@ -393,7 +393,7 @@ if executable('ag')
     if has('win32')
         let g:ctrlsf_extra_backend_args = {  'ag': '--path-to-ignore ~/AppData/Local/nvim/agignore'  }
     else
-        let g:ctrlsf_extra_backend_args = {  'ag': '--path-to-agignore ~/.config/nvim/agignore'  }
+        let g:ctrlsf_extra_backend_args = {  'ag': '--path-to-ignore ~/.config/nvim/agignore'  }
     endif
 endif
 "if you want CtrlSF use regular expression by default (like Ack/Ag), you can set it to 1.
