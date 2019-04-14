@@ -252,6 +252,19 @@ Plug 'racer-rust/vim-racer'
 
 
 "--------------------------------------------------------------------------
+" go language
+"--------------------------------------------------------------------------
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" You can add some shortcuts to make it easier to jump between errors in quickfix list:
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+" I also use these shortcuts to build and run a Go program with <leader>b and <leader>r:
+autocmd FileType go nmap <leader>gb  <Plug>(go-build)
+autocmd FileType go nmap <leader>gr  <Plug>(go-run)
+
+
+"--------------------------------------------------------------------------
 " 使用过 Sublime Text 的人应该都对 Sublime Text 中多点编辑功能爱不释手，
 " 这个功能对于代码重构非常实用，如何在 Nvim 中使用类似的功能呢？可以借助于
 " vim-multiple-cursors 插件。
