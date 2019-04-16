@@ -254,14 +254,22 @@ Plug 'racer-rust/vim-racer'
 "--------------------------------------------------------------------------
 " go language
 "--------------------------------------------------------------------------
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" You can add some shortcuts to make it easier to jump between errors in quickfix list:
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-" I also use these shortcuts to build and run a Go program with <leader>b and <leader>r:
-autocmd FileType go nmap <leader>gb  <Plug>(go-build)
-autocmd FileType go nmap <leader>gr  <Plug>(go-run)
+if !has('win32')
+    Plug 'fatih/vim-go', {'tag': 'v1.9', 'do': ':GoUpdateBinaries' }
+    " You can add some shortcuts to make it easier to jump between errors in quickfix list:
+    map <C-n> :cnext<CR>
+    map <C-m> :cprevious<CR>
+    nnoremap <leader>a :cclose<CR>
+    " I also use these shortcuts to build and run a Go program with <leader>b and <leader>r:
+    autocmd FileType go nmap <leader>gb  <Plug>(go-build)
+    autocmd FileType go nmap <leader>gr  <Plug>(go-run)
+
+
+    "--------------------------------------------------------------------------
+    " go补全
+    "--------------------------------------------------------------------------
+    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
+endif
 
 
 "--------------------------------------------------------------------------
