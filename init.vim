@@ -254,7 +254,7 @@ Plug 'racer-rust/vim-racer'
 "--------------------------------------------------------------------------
 " go language
 "--------------------------------------------------------------------------
-if !has('win32')
+if !has('win32') && isdirectory("/usr/local/go")
     Plug 'fatih/vim-go', {'tag': 'v1.9', 'do': ':GoUpdateBinaries' }
     " You can add some shortcuts to make it easier to jump between errors in quickfix list:
     map <C-n> :cnext<CR>
