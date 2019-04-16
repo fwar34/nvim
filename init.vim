@@ -1335,6 +1335,9 @@ if executable('pygmentize')
     endif
 endif
 
+"not gutentags for vim
+let g:gutentags_exclude_filetypes = ['vim', 'go']
+
 " 同时开启 ctags 和 gtags 支持：
 let g:gutentags_modules = []
 if executable('ctags')
@@ -1345,7 +1348,6 @@ if executable('gtags-cscope') && executable('gtags')
 endif
 
 function! s:my_gutentags_settings()
-    "not gutentags for vim
     if &filetype == 'vim' 
         let g:gutentags_enabled = 0
     else
@@ -1354,7 +1356,7 @@ function! s:my_gutentags_settings()
 endfunc
 
 augroup MyGutentModuleSettings
-    autocmd FileType * call s:my_gutentags_settings()
+    "autocmd FileType * call s:my_gutentags_settings()
 augroup END
 
 " 如果使用 universal ctags 需要增加下面两行
@@ -1370,7 +1372,7 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 let g:gutentags_plus_switch = 1
 
 " 禁用 gutentags 自动加载 gtags 数据库的行为
-"let g:gutentags_auto_add_gtags_cscope = 0
+let g:gutentags_auto_add_gtags_cscope = 0
 
 " 错误排查：gutentags: gutentags: gtags-cscope job failed, returned: 1
 "这是因为 gutentags 调用 gtags 时，gtags 返回了错误值 1，具体是什么情况，
