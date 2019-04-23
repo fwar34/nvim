@@ -249,6 +249,10 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' } "for: On-demand loading: File types
 " Racer support for Vim
 "--------------------------------------------------------------------------
 Plug 'racer-rust/vim-racer'
+"The :RustFmt command will format your code with rustfmt if installed.
+"Placing let g:rustfmt_autosave = 1 in your ~/.vimrc will enable automatic running of :RustFmt when you save a buffer.
+"Do :help :RustFmt for further formatting help and customization options.
+let g:rustfmt_autosave = 1
 
 
 "--------------------------------------------------------------------------
