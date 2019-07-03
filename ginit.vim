@@ -18,7 +18,8 @@ else
         "GuiFont! Consolas:h12:cANSI
         GuiFont! Hack:h12:cANSI
     else
-        Guifont Fira\ Code:h14:cANSI
+        "Guifont Fira\ Code:h14:cANSI
+        Guifont DejaVu\ Sans\ Mono:h16
     endif
 endif
 
