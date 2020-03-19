@@ -530,8 +530,8 @@ noremap <silent> <Leader>li :LeaderfLine<CR>
 "noremap <Leader>tb :LeaderfTag<cr>
 "let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_PreviewCode = 1
-if executable('/usr/local/bin/ctags')
-    let g:Lf_Ctags = "/usr/local/bin/ctags"
+if executable('/usr/bin/ctags')
+    let g:Lf_Ctags = "/usr/bin/ctags"
 endif
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_WorkingDirectoryMode = 'Ac'
@@ -941,7 +941,7 @@ endif
 "if has('unix') && s:memory_enough
 if s:memory_enough
     if has('nvim')
-        Plug 'Shougo/deoplete.nvim', { 'tag': '4.1', 'do': ':UpdateRemotePlugins' }
+        Plug 'Shougo/deoplete.nvim',  { 'do': ':UpdateRemotePlugins'  } 
 
         "https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/
         "函数方法 Preview 的窗口如何自动关闭？ 在自动补全给出的列表中移动的时候，
@@ -952,7 +952,7 @@ if s:memory_enough
         "如何设定为使用 Tab 键在自动补全的列表跳转？ 在 Nvim 的配置中，加入如下设置即可：
         inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
     else
-        Plug 'Shougo/deoplete.nvim', { 'tag': '4.1' }
+        Plug 'Shougo/deoplete.nvim'
         Plug 'roxma/nvim-yarp'
         Plug 'roxma/vim-hug-neovim-rpc'
 
@@ -976,6 +976,9 @@ if s:memory_enough
         if isdirectory('/usr/lib/llvm-6.0/')
             let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
             let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-6.0/lib/clang'
+        elseif isdirectory('/usr/lib/llvm-7/')
+            let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-7/lib/libclang.so.1'
+            let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-7/lib/clang'
         elseif isdirectory('/usr/lib/llvm-3.8/')
             let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
             let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-3.8/lib/clang'
