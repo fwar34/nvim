@@ -272,7 +272,9 @@ if !has('win32') && isdirectory("/usr/local/go")
     "--------------------------------------------------------------------------
     " go补全
     "--------------------------------------------------------------------------
-    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
+    if has('nvim')
+        Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
+    endif
 endif
 
 
@@ -952,17 +954,19 @@ if s:memory_enough
         "如何设定为使用 Tab 键在自动补全的列表跳转？ 在 Nvim 的配置中，加入如下设置即可：
         inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
     else
-        Plug 'Shougo/deoplete.nvim'
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hug-neovim-rpc'
+        "Plug 'Shougo/deoplete.nvim'
+        "Plug 'roxma/nvim-yarp'
+        "Plug 'roxma/vim-hug-neovim-rpc'
 
-        if has('pythonx')
-            set pyxversion=3
-        endif
+        "if has('pythonx')
+            "set pyxversion=3
+        "endif
     endif
     let g:deoplete#enable_at_startup = 1
 
-    Plug 'zchee/deoplete-jedi'
+    if has('nvim')
+        Plug 'zchee/deoplete-jedi'
+    endif
     "Plug 'Shougo/deoplete-clangx'
     "" Change clang binary path
     "call deoplete#custom#var('clangx', 'clang_binary', '/usr/local/bin/clang')
@@ -971,7 +975,7 @@ if s:memory_enough
     "call deoplete#custom#var('clangx', 'default_c_options', '')
     "call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
-    if has('unix')
+    if has('unix') && has('nvim')
         Plug 'deoplete-plugins/deoplete-clang'
         if isdirectory('/usr/lib/llvm-6.0/')
             let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
@@ -988,7 +992,9 @@ if s:memory_enough
         endif
     endif
 
-    Plug 'Shougo/neoinclude.vim'
+    if has('nvim')
+        Plug 'Shougo/neoinclude.vim'
+    endif
     if has('win32')
         if isdirectory('C:\Users\feng\AppData\Local\Programs\Python\Python37-32')
             let g:python3_host_prog='C:\Users\feng\AppData\Local\Programs\Python\Python37-32\python.exe'
@@ -999,19 +1005,28 @@ if s:memory_enough
     endif
 endif
 
+
 "--------------------------------------------------------------------------
 " deoplete-tabnine
 "--------------------------------------------------------------------------
 if has('win32')
-    Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1'  }
+    if has('nvim')
+        Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1'  }
+    endif
 else
-    Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh'  }
+    if has('nvim')
+        Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh'  }
+    endif
 endif
 
 
 "--------------------------------------------------------------------------
+" https://github.com/WenxiJin/.clang_complete
 " This script is for generating a .clang_complete that could be
 " utilized by emacs irony-mode or company-clang mode.
+" 1. make -n > compile.log
+" Note: CMake-generated Makefiles only support VERBOSE=1, not V=1. compile.log could be any name you want.
+" 2. ruby cc_args.rb compile.log
 "--------------------------------------------------------------------------
 Plug 'WenxiJin/.clang_complete'
 
