@@ -258,7 +258,7 @@ let g:rustfmt_autosave = 1
 "--------------------------------------------------------------------------
 " go language
 "--------------------------------------------------------------------------
-if !has('win32') && isdirectory("/usr/local/go")
+if !has('win32') && filereadable("/usr/bin/go")
     Plug 'fatih/vim-go', {'tag': 'v1.9', 'do': ':GoUpdateBinaries' }
     " You can add some shortcuts to make it easier to jump between errors in quickfix list:
     map <C-n> :cnext<CR>
