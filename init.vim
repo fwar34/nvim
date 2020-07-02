@@ -495,7 +495,7 @@ Plug 'easymotion/vim-easymotion'
 "--------------------------------------------------------------------------
 " Perform all your vim insert mode completions with Tab
 "--------------------------------------------------------------------------
-Plug 'ervandew/supertab'
+""Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
