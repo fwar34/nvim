@@ -28,6 +28,8 @@ GuiTabline 0
 "reduce line space
 GuiLinespace 1
 
+set mouse=a
+
 " 全屏nvim
 if hostname() == "DESKTOP-LL8PBC8"
     set lines=40 columns=130
