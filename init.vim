@@ -79,6 +79,8 @@ if has('win32') && !has('nvim')
         set pythonthreedll=C:\Users\fwar3\AppData\Local\Programs\Python\Python36\python36.dll
     elseif isdirectory('C:\Python37')
         set pythonthreedll=C:\Python37\python37.dll
+    elseif isdirectory('C:\Python38')
+        set pythonthreedll=C:\Python38\python38.dll
     endif
 endif
 
@@ -1001,6 +1003,8 @@ if s:memory_enough
         elseif isdirectory('C:\Users\fwar3\AppData\Local\Programs\Python\Python36')
         elseif isdirectory('C:\Python37')
             let g:python3_host_prog='C:\Python37\python.exe'
+        elseif isdirectory('C:\Python38')
+            let g:python3_host_prog='C:\Python38\python.exe'
         endif
     endif
 endif
