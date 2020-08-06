@@ -1088,6 +1088,11 @@ nnoremap <silent> <Leader>tt :NERDTreeToggle<CR>
 "let NERDTreeWinPos="right"
 " 显示隐藏文件
 "let NERDTreeShowHidden=1
+" 显示行号
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+" 显示书签列表
+let NERDTreeShowBookmarks=1
 " NERDTree 子窗口中不显示冗余帮助信息
 let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
@@ -1736,8 +1741,8 @@ nnoremap <Leader>ia mgA;<Esc>`gmg
 nnoremap <Leader><TAB> <C-w><C-w>
 nnoremap <Leader>bb <C-^>
 nnoremap <Leader>mm %
-nnoremap <Leader>dj :e .<CR>
-nnoremap <Leader>df :Explore<CR>
+nnoremap <Leader>dj :Sex<CR>
+"nnoremap <Leader>df :Explore<CR>
 
 
 "--------------------------------------------------------------------------
@@ -1971,13 +1976,13 @@ endif
 
 
 "-----------------------------------------------------
-" netrw
+" netrw <Leader>dj
 "-----------------------------------------------------
-let g:netrw_liststyle = 1
-let g:netrw_winsize = 25
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 75
 let g:netrw_list_hide = '\.swp\($\|\t\),\.py[co]\($\|\t\),\.o\($\|\t\),\.bak\($\|\t\),\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_sort_sequence = '[\/]$,*,\.bak$,\.o$,\.info$,\.swp$,\.obj$'
-let g:netrw_preview = 0
+"let g:netrw_preview = 0
 "let g:netrw_special_syntax = 1
 let g:netrw_sort_options = 'i'
 
