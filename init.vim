@@ -943,7 +943,7 @@ endif
 "if has('unix') && s:memory_enough
 if s:memory_enough
     if has('nvim')
-        Plug 'Shougo/deoplete.nvim',  { 'do': ':UpdateRemotePlugins'  } 
+        Plug 'Shougo/deoplete.nvim',  { 'tag': '5.2', 'do': ':UpdateRemotePlugins' } 
 
         "https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/
         "函数方法 Preview 的窗口如何自动关闭？ 在自动补全给出的列表中移动的时候，
