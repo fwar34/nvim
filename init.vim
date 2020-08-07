@@ -30,7 +30,17 @@ else
     call s:read_total_memory()
 endif
 
+"let s:py3_version = 3
 
+if has('python3')
+python3 << EOF
+import vim
+import platform
+
+#py3_version = vim.eval("s:py3_version")  获取vim的变量
+vim.command("let s:py3_version = '%s'" % platform.python_version())
+EOF
+endif
 "--------------------------------------------------------------------------
 "
 "--------------------------------------------------------------------------
@@ -274,7 +284,7 @@ if !has('win32') && filereadable("/usr/bin/go")
     "--------------------------------------------------------------------------
     " go补全
     "--------------------------------------------------------------------------
-    if has('nvim')
+    if has('nvim') && s:py3_version != "3.4.3"
         Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
     endif
 endif
@@ -943,7 +953,7 @@ endif
 " deoplete
 "--------------------------------------------------------------------------
 "if has('unix') && s:memory_enough
-if s:memory_enough
+if s:memory_enough && s:py3_version != '3.4.3'
     if has('nvim')
         Plug 'Shougo/deoplete.nvim',  { 'tag': '5.2', 'do': ':UpdateRemotePlugins' } 
 
@@ -1014,11 +1024,11 @@ endif
 " deoplete-tabnine
 "--------------------------------------------------------------------------
 if has('win32')
-    if has('nvim')
+    if has('nvim') && s:py3_version != "3.4.3"
         Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1'  }
     endif
 else
-    if has('nvim')
+    if has('nvim') && s:py3_version != "3.4.3"
         Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh'  }
     endif
 endif
@@ -1719,6 +1729,7 @@ noremap! <C-d> <Delete>
 noremap! <Leader>w <C-w>
 nnoremap <silent> <Leader>xx :nohl<CR>
 nnoremap ge G
+nnoremap Y y$
 nnoremap . ;
 nnoremap <Leader>zz :w<CR>
 inoremap <Leader>zz <Esc>:w<CR>a
