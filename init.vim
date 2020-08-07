@@ -1992,7 +1992,7 @@ endif
 "-----------------------------------------------------
 " netrw <Leader>dj
 "-----------------------------------------------------
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 1
 let g:netrw_winsize = 75
 let g:netrw_list_hide = '\.swp\($\|\t\),\.py[co]\($\|\t\),\.o\($\|\t\),\.bak\($\|\t\),\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_sort_sequence = '[\/]$,*,\.bak$,\.o$,\.info$,\.swp$,\.obj$'
