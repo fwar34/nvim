@@ -30,9 +30,8 @@ else
     call s:read_total_memory()
 endif
 
-"let s:py3_version = 3
-
-if has('python3')
+let s:py3_version = ""
+if has('python3') && has('nvim')
 python3 << EOF
 import vim
 import platform
