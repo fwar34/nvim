@@ -991,6 +991,9 @@ if s:memory_enough && s:py3_version != '3.4.3'
         if isdirectory('/usr/lib/llvm-6.0/')
             let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
             let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-6.0/lib/clang'
+        elseif isdirectory('/usr/lib/llvm-10/')
+            let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-10/lib/libclang.so.1'
+            let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-10/lib/clang'
         elseif isdirectory('/usr/lib/llvm-7/')
             let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-7/lib/libclang.so.1'
             let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-7/lib/clang'
