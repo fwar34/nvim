@@ -1168,6 +1168,19 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
     "\ "Unknown"   : "?"
     "\ }
 
+"--------------------------------------------------------------------------
+" Ranger integration in vim and neovim
+"--------------------------------------------------------------------------
+Plug 'francoiscabrol/ranger.vim'
+"If you use neovim, you have to add the dependency to the plugin bclose.vim:
+if has('nvim')
+    Plug 'rbgrouleff/bclose.vim'
+endif
+let g:ranger_map_keys = 0
+map <leader>rg :Ranger<CR>
+let g:NERDTreeHijackNetrw = 0  "add this line if you use NERDTree
+let g:ranger_replace_netrw = 1 "open ranger when vim open a directory
+
 
 "--------------------------------------------------------------------------
 " Async plugin for vim and neovim to ease the use of ctags/gtags
