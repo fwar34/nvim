@@ -269,22 +269,24 @@ let g:rustfmt_autosave = 1
 "--------------------------------------------------------------------------
 " go language
 "--------------------------------------------------------------------------
-if !has('win32') && filereadable("/usr/bin/go")
-    Plug 'fatih/vim-go', {'tag': 'v1.9', 'do': ':GoUpdateBinaries' }
-    " You can add some shortcuts to make it easier to jump between errors in quickfix list:
-    map <C-n> :cnext<CR>
-    map <C-m> :cprevious<CR>
-    nnoremap <leader>a :cclose<CR>
-    " I also use these shortcuts to build and run a Go program with <leader>b and <leader>r:
-    autocmd FileType go nmap <leader>gb  <Plug>(go-build)
-    autocmd FileType go nmap <leader>gr  <Plug>(go-run)
+if !has('win32') 
+    if filereadable("/usr/bin/go") || filereadable("/usr/local/go/bin/go")
+        Plug 'fatih/vim-go', {'tag': 'v1.9', 'do': ':GoUpdateBinaries' }
+        " You can add some shortcuts to make it easier to jump between errors in quickfix list:
+        map <C-n> :cnext<CR>
+        map <C-m> :cprevious<CR>
+        nnoremap <leader>a :cclose<CR>
+        " I also use these shortcuts to build and run a Go program with <leader>b and <leader>r:
+        autocmd FileType go nmap <leader>gb  <Plug>(go-build)
+        autocmd FileType go nmap <leader>gr  <Plug>(go-run)
 
 
-    "--------------------------------------------------------------------------
-    " go补全
-    "--------------------------------------------------------------------------
-    if has('nvim') && s:py3_version != "3.4.3"
-        Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
+        "--------------------------------------------------------------------------
+        " go补全
+        "--------------------------------------------------------------------------
+        if has('nvim') && s:py3_version != "3.4.3"
+            Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
+        endif
     endif
 endif
 
