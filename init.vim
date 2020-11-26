@@ -1544,7 +1544,6 @@ endif
 " 字体设置 for vim
 "--------------------------------------------------------------------------
 "windows下空格为:而unix下要转译\,windows下字体的空格用下划线_
-set guifontset=
 if has('gui_running')
     if has('win32')
         if hostname() == "A12839"
@@ -2244,3 +2243,6 @@ else
     let g:python_version = 0
 endif
 
+" load lua functions for navigation
+lua require("navigation")
+let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
