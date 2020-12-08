@@ -2244,5 +2244,5 @@ else
 endif
 
 " load lua functions for navigation
-lua require("navigation")
-let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
+"lua require("navigation")
+"let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
