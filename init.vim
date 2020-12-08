@@ -1382,16 +1382,16 @@ let g:gutentags_ctags_tagfile = '.tags'
 let g:gutentags_exclude_project_root = [expand('~/.vim')]
 
 "有pygments的话对gtags添加其他语言的支持
-if executable('pygmentize')
-    "let $GTAGSLABEL = 'native-pygments'
-    let $GTAGSLABEL = 'pygments'
-    "let $GTAGSLABEL = 'native'
-    if has('win32')
-        let $GTAGSCONF = expand('~/global/share/gtags/gtags.conf')
-    else
-        let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
-    endif
-endif
+" if executable('pygmentize')
+"     "let $GTAGSLABEL = 'native-pygments'
+"     let $GTAGSLABEL = 'pygments'
+"     "let $GTAGSLABEL = 'native'
+"     if has('win32')
+"         let $GTAGSCONF = expand('~/global/share/gtags/gtags.conf')
+"     else
+"         let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+"     endif
+" endif
 
 "not gutentags for vim
 let g:gutentags_exclude_filetypes = ['vim', 'go']
@@ -1406,7 +1406,7 @@ if executable('gtags-cscope') && executable('gtags')
 endif
 
 function! s:my_gutentags_settings()
-    if &filetype == 'vim' 
+    if &filetype == 'vim'
         let g:gutentags_enabled = 0
     else
         let g:gutentags_enabled = 1
