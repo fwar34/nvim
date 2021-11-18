@@ -1565,6 +1565,10 @@ if has('gui_running')
     endif
 endif
 
+if exists('g:GuiLoaded')
+    set guifont=JetBrains\ Mono:h11
+    set guifontwide=Noto\ Sans\ CJK\ SC:h11
+endif
 
 syntax on           " 语法高亮
 syntax enable
